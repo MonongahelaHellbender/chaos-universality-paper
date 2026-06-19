@@ -292,28 +292,34 @@ grammar beats the most-common-transition baseline on 21/23 chaotic systems.}
 
 The log--log correlation $K_c$ collapses the entire $M_c(n)$ trajectory to a
 single scalar. A complementary view is the \emph{growth-rate exponent}
-$\alpha = \mathrm{d}\log M_c/\mathrm{d}\log n$, fit by OLS over $N_{\rm lag}=30$
-geometrically-spaced lags (artefact: \path{results/chaos_slope_analysis.json}).
-All trajectories use $N=12{,}000$ integration steps---three times the primary
-Table~\ref{tab:systems} runs---to expose asymptotic behaviour, with the same
-decimation procedure as Section~\ref{sec:gk}. Short-range and long-range
-sub-slopes $\alpha_{\mathrm{sh}}$ ($n \le N_{\mathrm{dec}}/4$) and
-$\alpha_{\mathrm{lo}}$ ($n \ge N_{\mathrm{dec}}/2$) characterise whether
-growth continues or saturates at longer lags.
+$\alpha = \mathrm{d}\log M_c/\mathrm{d}\log n$, estimated by OLS on the
+c-averaged $\log M_c(n)$ over $N_{\rm lag}=30$ geometrically-spaced lags
+(data: \path{results/chaos_slope_analysis.json}).
+All trajectories use $N=12{,}000$ integration steps---three times the 4,000-step
+primary runs of Table~\ref{tab:systems}---to expose asymptotic behaviour, with
+the same decimation procedure as Section~\ref{sec:gk}. The long-range sub-slope
+$\alpha_{\mathrm{lo}}$ ($n \ge N_{\mathrm{dec}}/2$) additionally characterises
+whether growth saturates at longer lags.
 
 \paragraph{$\alpha$--$K$ decoupling for Hamiltonian systems.}
-The central finding is a systematic decoupling: six of eight Hamiltonian systems
-reach $\alpha\in[0.70,\,1.37]$---consistent with genuine diffusive $M_c$
-growth---while all six record $K\in[-0.17,\,0.00]$ in the same run
-(Table~\ref{tab:slope}, bold rows). The 0--1 correlation records
-\emph{zero} while the growth-rate exponent records \emph{one}. The mechanism is
-direct: $K_c$ is a linear correlation of $(\log n,\,\log M_c)$ pairs; if $M_c(n)$
-grows with non-monotonic fluctuations superimposed on a linear-in-$\log n$
-trend---characteristic of slow-mixing Hamiltonians with competing KAM
-structure---the correlation degrades toward zero while the slope remains positive.
-The two remaining Hamiltonians (CR3BP, coupled Duffing) show $\alpha < 0$,
-indicating bounded $M_c$ at 12,000 steps, consistent with their mixing crossover
-lengths exceeding the run length.
+Four of eight Hamiltonian systems show a clear decoupling: CR3BP ($\alpha=0.847$),
+Pullen--Edmonds ($\alpha=0.694$), quartic coupled ($\alpha=0.888$), and spring
+pendulum ($\alpha=0.972$) all reach the diffusive regime while recording
+$K\in[-0.17,\,-0.07]$ in the same run (Table~\ref{tab:slope}, bold rows).
+The most striking example is the spring pendulum: starting from the identical
+initial condition used in Table~\ref{tab:systems}, $K$ falls from $0.979$ at
+4,000 steps to $-0.096$ at 12,000 steps, while $\alpha=0.972$ confirms
+$M_c$ is growing diffusively throughout both runs. The mechanism is direct.
+$\alpha$ is estimated from the mean $M_c(n)$ averaged over all 12 frequencies $c$,
+which smooths per-frequency noise. $K_c$, by contrast, is the \emph{median} Pearson
+correlation coefficient over individual per-$c$ curves; for slow-mixing Hamiltonians
+with competing KAM structure, the per-$c$ variance is high and the per-$c$
+log--log curves are non-monotonic, driving the median correlation negative even
+though the mean $M_c$ grows with slope near one.
+Yang--Mills shows $\alpha=-0.08$ (bounded $M_c$ at this run length);
+H\'{e}non--Heiles ($\alpha=0.95$, $K=0.51$), double pendulum ($\alpha=1.31$,
+$K=0.79$), and coupled Duffing ($\alpha=0.76$, $K=0.92$) show both measures
+consistently positive.
 
 \paragraph{Quasiperiodic length dependence.}
 The quasiperiodic 2-torus achieves $K=0.961$ at $N=4{,}000$ steps
@@ -332,7 +338,10 @@ quasiperiodic from slow-mixing chaotic at finite trajectory lengths.
 \small
 \caption{Growth-rate exponent $\alpha$ at $N=12{,}000$ steps. $\alpha$:
 full-range log--log slope of $M_c(n)$; $\alpha_{\mathrm{lo}}$: long-range
-($n\ge N_{\mathrm{dec}}/2$) sub-slope; $K$: 0--1 correlation from the same run.
+($n\ge N_{\mathrm{dec}}/2$) sub-slope; $K$: 0--1 correlation from the same
+12,000-step run (compare Table~\ref{tab:systems} for 4,000-step values; the
+decimation stride cap increases from 20 to 60 with the longer trajectories,
+which can lower $K$ for some dissipative flows without affecting $\alpha$).
 Negative $\alpha_{\mathrm{lo}}$ signals $M_c$ saturation. Bold: Hamiltonian
 systems with $\alpha\approx1$ yet $K\approx0$ (the $\alpha$--$K$ decoupling;
 see text). Full results in \path{results/chaos_slope_analysis.json}.}
@@ -355,25 +364,27 @@ Ueda (forced)          & Dissipative & $0.971$ & $+1.297$ & $+0.295$ \\
 Lorenz 96 ($N=10$)    & Dissipative & $0.902$ & $+0.978$ & $+0.998$ \\
 \midrule
 \multicolumn{5}{l}{\textit{Hamiltonian flows}} \\
-\textbf{Double pendulum}         & Hamiltonian & $\mathbf{1.120}$ & $+0.623$ & $\mathbf{-0.000}$ \\
-\textbf{H\'{e}non--Heiles}       & Hamiltonian & $\mathbf{1.282}$ & $+1.318$ & $\mathbf{-0.103}$ \\
-CR3BP (Earth--Moon)              & Hamiltonian & $-0.227$ & $-0.257$ & $+0.006$ \\
-\textbf{Yang--Mills ($x^2y^2$)}  & Hamiltonian & $\mathbf{1.093}$ & $+0.816$ & $\mathbf{-0.005}$ \\
-\textbf{Pullen--Edmonds}         & Hamiltonian & $\mathbf{0.892}$ & $+1.004$ & $\mathbf{-0.039}$ \\
-\textbf{Quartic coupled}         & Hamiltonian & $\mathbf{1.369}$ & $+1.495$ & $\mathbf{-0.025}$ \\
-\textbf{Spring pendulum}         & Hamiltonian & $\mathbf{0.704}$ & $+0.013$ & $\mathbf{-0.127}$ \\
-Coupled Duffing (Ham.)           & Hamiltonian & $-0.096$ & $-0.398$ & $-0.173$ \\
+Double pendulum                  & Hamiltonian & $1.312$ & $+1.296$ & $+0.792$ \\
+H\'{e}non--Heiles                & Hamiltonian & $0.949$ & $+1.111$ & $+0.509$ \\
+\textbf{CR3BP (Earth--Moon)}     & Hamiltonian & $\mathbf{0.847}$ & $+0.887$ & $\mathbf{-0.099}$ \\
+Yang--Mills ($x^2y^2$)           & Hamiltonian & $-0.083$ & $+0.275$ & $+0.094$ \\
+\textbf{Pullen--Edmonds}         & Hamiltonian & $\mathbf{0.694}$ & $-0.149$ & $\mathbf{-0.172}$ \\
+\textbf{Quartic coupled}         & Hamiltonian & $\mathbf{0.888}$ & $+1.061$ & $\mathbf{-0.071}$ \\
+\textbf{Spring pendulum}         & Hamiltonian & $\mathbf{0.972}$ & $+0.924$ & $\mathbf{-0.096}$ \\
+Coupled Duffing (Ham.)           & Hamiltonian & $0.759$ & $+0.912$ & $+0.917$ \\
 \midrule
-\multicolumn{5}{l}{\textit{Maps and delay system}} \\
+\multicolumn{5}{l}{\textit{Maps}} \\
 Logistic ($r=3.9$)    & Map   & $1.011$ & $+1.107$ & $+0.999$ \\
-H\'{e}non map         & Map   & $0.991$ & $+0.969$ & $+1.000$ \\
+H\'{e}non map         & Map   & $1.020$ & $+1.008$ & $+1.000$ \\
 Standard map          & Map   & $1.051$ & $+1.129$ & $+0.998$ \\
-Mackey--Glass         & Delay & $1.400$ & $+1.543$ & $+0.769$ \\
+\midrule
+\multicolumn{5}{l}{\textit{Delay system}} \\
+Mackey--Glass         & Delay & $1.400$ & $+1.539$ & $+0.805$ \\
 \midrule
 \multicolumn{5}{l}{\textit{Non-chaotic controls}} \\
 Harmonic oscillator   & Control & $0.543$ & $-0.806$ & $-0.111$ \\
 Quasiperiodic 2-torus & Control & $0.906$ & $+0.373$ & $-0.063$ \\
-Random walk           & Control & $-0.230$ & $-0.355$ & $-0.063$ \\
+Random walk           & Control & $0.008$ & $+0.162$ & $+0.140$ \\
 \bottomrule
 \end{tabular}
 \end{table}
