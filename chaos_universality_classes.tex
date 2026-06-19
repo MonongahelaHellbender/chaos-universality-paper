@@ -287,6 +287,97 @@ grammar beats the most-common-transition baseline on 21/23 chaotic systems.}
 \label{fig:itin}
 \end{figure}
 
+\subsection{Growth-rate diagnostics: M$_c$ slope analysis}
+\label{sec:slope}
+
+The log--log correlation $K_c$ collapses the entire $M_c(n)$ trajectory to a
+single scalar. A complementary view is the \emph{growth-rate exponent}
+$\alpha = \mathrm{d}\log M_c/\mathrm{d}\log n$, fit by OLS over $N_{\rm lag}=30$
+geometrically-spaced lags (artefact: \path{results/chaos_slope_analysis.json}).
+All trajectories use $N=12{,}000$ integration steps---three times the primary
+Table~\ref{tab:systems} runs---to expose asymptotic behaviour, with the same
+decimation procedure as Section~\ref{sec:gk}. Short-range and long-range
+sub-slopes $\alpha_{\mathrm{sh}}$ ($n \le N_{\mathrm{dec}}/4$) and
+$\alpha_{\mathrm{lo}}$ ($n \ge N_{\mathrm{dec}}/2$) characterise whether
+growth continues or saturates at longer lags.
+
+\paragraph{$\alpha$--$K$ decoupling for Hamiltonian systems.}
+The central finding is a systematic decoupling: six of eight Hamiltonian systems
+reach $\alpha\in[0.70,\,1.37]$---consistent with genuine diffusive $M_c$
+growth---while all six record $K\in[-0.17,\,0.00]$ in the same run
+(Table~\ref{tab:slope}, bold rows). The 0--1 correlation records
+\emph{zero} while the growth-rate exponent records \emph{one}. The mechanism is
+direct: $K_c$ is a linear correlation of $(\log n,\,\log M_c)$ pairs; if $M_c(n)$
+grows with non-monotonic fluctuations superimposed on a linear-in-$\log n$
+trend---characteristic of slow-mixing Hamiltonians with competing KAM
+structure---the correlation degrades toward zero while the slope remains positive.
+The two remaining Hamiltonians (CR3BP, coupled Duffing) show $\alpha < 0$,
+indicating bounded $M_c$ at 12,000 steps, consistent with their mixing crossover
+lengths exceeding the run length.
+
+\paragraph{Quasiperiodic length dependence.}
+The quasiperiodic 2-torus achieves $K=0.961$ at $N=4{,}000$ steps
+(Table~\ref{tab:systems}) but $K=-0.06$ and $\alpha=0.91$ at $N=12{,}000$ steps.
+This confirms that the high $K$ is a finite-trajectory artefact: near-resonant $c$
+values produce a visible $n^2$ transient that the log--log correlation records as
+near-one at short runs; longer trajectories reveal saturation.
+The long-range sub-slope $\alpha_{\mathrm{lo}}=0.37$ (partial saturation) versus
+$\alpha_{\mathrm{lo}}=-0.81$ for the harmonic oscillator (unambiguous saturation)
+shows that the sub-slope signature can flag periodic/quasiperiodic dynamics where
+the full slope cannot. Neither $\alpha$ alone nor $K$ alone reliably separates
+quasiperiodic from slow-mixing chaotic at finite trajectory lengths.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Growth-rate exponent $\alpha$ at $N=12{,}000$ steps. $\alpha$:
+full-range log--log slope of $M_c(n)$; $\alpha_{\mathrm{lo}}$: long-range
+($n\ge N_{\mathrm{dec}}/2$) sub-slope; $K$: 0--1 correlation from the same run.
+Negative $\alpha_{\mathrm{lo}}$ signals $M_c$ saturation. Bold: Hamiltonian
+systems with $\alpha\approx1$ yet $K\approx0$ (the $\alpha$--$K$ decoupling;
+see text). Full results in \path{results/chaos_slope_analysis.json}.}
+\label{tab:slope}
+\begin{tabular}{llrrr}
+\toprule
+System & Family & $\alpha$ & $\alpha_{\mathrm{lo}}$ & $K$ \\
+\midrule
+\multicolumn{5}{l}{\textit{Dissipative flows}} \\
+Lorenz 63              & Dissipative & $0.929$ & $+0.934$ & $+0.999$ \\
+R\"{o}ssler            & Dissipative & $0.615$ & $-0.254$ & $+0.567$ \\
+Duffing (forced)       & Dissipative & $0.916$ & $+0.995$ & $+0.276$ \\
+Lorenz 96 ($N=5$)     & Dissipative & $0.884$ & $+0.090$ & $+0.940$ \\
+Aizawa                 & Dissipative & $0.853$ & $+0.191$ & $+0.696$ \\
+Sprott B               & Dissipative & $0.956$ & $+0.969$ & $+0.997$ \\
+Halvorsen              & Dissipative & $1.018$ & $+1.331$ & $+0.957$ \\
+Thomas                 & Dissipative & $1.098$ & $+1.132$ & $+0.995$ \\
+Chen                   & Dissipative & $1.024$ & $+1.103$ & $+0.994$ \\
+Ueda (forced)          & Dissipative & $0.971$ & $+1.297$ & $+0.295$ \\
+Lorenz 96 ($N=10$)    & Dissipative & $0.902$ & $+0.978$ & $+0.998$ \\
+\midrule
+\multicolumn{5}{l}{\textit{Hamiltonian flows}} \\
+\textbf{Double pendulum}         & Hamiltonian & $\mathbf{1.120}$ & $+0.623$ & $\mathbf{-0.000}$ \\
+\textbf{H\'{e}non--Heiles}       & Hamiltonian & $\mathbf{1.282}$ & $+1.318$ & $\mathbf{-0.103}$ \\
+CR3BP (Earth--Moon)              & Hamiltonian & $-0.227$ & $-0.257$ & $+0.006$ \\
+\textbf{Yang--Mills ($x^2y^2$)}  & Hamiltonian & $\mathbf{1.093}$ & $+0.816$ & $\mathbf{-0.005}$ \\
+\textbf{Pullen--Edmonds}         & Hamiltonian & $\mathbf{0.892}$ & $+1.004$ & $\mathbf{-0.039}$ \\
+\textbf{Quartic coupled}         & Hamiltonian & $\mathbf{1.369}$ & $+1.495$ & $\mathbf{-0.025}$ \\
+\textbf{Spring pendulum}         & Hamiltonian & $\mathbf{0.704}$ & $+0.013$ & $\mathbf{-0.127}$ \\
+Coupled Duffing (Ham.)           & Hamiltonian & $-0.096$ & $-0.398$ & $-0.173$ \\
+\midrule
+\multicolumn{5}{l}{\textit{Maps and delay system}} \\
+Logistic ($r=3.9$)    & Map   & $1.011$ & $+1.107$ & $+0.999$ \\
+H\'{e}non map         & Map   & $0.991$ & $+0.969$ & $+1.000$ \\
+Standard map          & Map   & $1.051$ & $+1.129$ & $+0.998$ \\
+Mackey--Glass         & Delay & $1.400$ & $+1.543$ & $+0.769$ \\
+\midrule
+\multicolumn{5}{l}{\textit{Non-chaotic controls}} \\
+Harmonic oscillator   & Control & $0.543$ & $-0.806$ & $-0.111$ \\
+Quasiperiodic 2-torus & Control & $0.906$ & $+0.373$ & $-0.063$ \\
+Random walk           & Control & $-0.230$ & $-0.355$ & $-0.063$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Parameter sweeps and stress checks}
 
 Parameter sweeps stress-test the two conclusions (Fig.~\ref{fig:mtsweep}). For
@@ -323,9 +414,12 @@ A striking secondary illustration of this failure: the quasiperiodic 2-torus
 control (Table~\ref{tab:systems}) achieves $K=0.961$ at 4000 steps---higher than
 five of the eight chaotic Hamiltonian systems. Quasiperiodic orbits produce
 $M_c(n)\sim n^2$ (ballistic growth) near resonance, which the log--log form of
-$K_c$ records as near-one. This is not a chaos detection; it is a false positive
-from a non-chaotic near-resonant system. The result reinforces the recommendation
-to use $K$ as a \emph{chaos detector}, not as a structural classifier.
+$K_c$ records as near-one. This is not chaos detection; it is a false positive
+from a non-chaotic near-resonant system. Extended to 12,000 steps the same system
+yields $K=-0.06$ (Section~\ref{sec:slope}), confirming that the high value is a
+finite-trajectory artefact: the $n^2$ transient saturates before the longer
+run ends. The result reinforces the recommendation to use $K$ as a \emph{chaos
+detector}, not as a structural classifier.
 
 When the model vector field is unavailable---purely observational scalar time
 series---distinguishing conservative from dissipative chaos without computing
@@ -385,10 +479,13 @@ All reported numbers are read from deterministic, seeded artifacts. Data and fig
 \path{results/chaos_universality_lab_best.json};
 \path{results/chaos_mixing_time_analysis.json};
 \path{results/chaos_green_kubo.json};
-\path{results/chaos_parameter_sweep.json}; and
-\path{results/chaos_itinerary_prediction.json}.
+\path{results/chaos_parameter_sweep.json};
+\path{results/chaos_itinerary_prediction.json}; and
+\path{results/chaos_slope_analysis.json}.
 \end{quote}
 Figures are regenerated by \path{scripts/chaos_make_figures.py}.
+The slope analysis (Table~\ref{tab:slope}) is regenerated by
+\path{scripts/chaos_slope_analysis.py}.
 
 \appendix
 
