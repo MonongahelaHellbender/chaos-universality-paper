@@ -87,7 +87,9 @@ are tracked as integration hygiene checks.
 \centering
 \small
 \caption{The 26-system benchmark. $\lambda_1$: largest Lyapunov exponent (positive
-= chaotic). $K$: 0--1 statistic from the primary initial condition at 4000 steps
+= chaotic); ``n.c.''\ means not computed via global algorithm (Mackey--Glass
+requires delay-embedding; known value from the literature is $\lambda_1\approx0.007$
+for $\tau=17$). $K$: 0--1 statistic from the primary initial condition at 4000 steps
 ($n_{\mathrm{steps,flow}}$); for slow-mixing Hamiltonians the ensemble mean over
 four initial conditions can differ substantially (double pendulum: $K=-0.13$
 at 4000 steps, mean over four ICs; see Fig.~\ref{fig:klen}). $\Sigma\lambda$: measured
@@ -127,7 +129,7 @@ H\'{e}non map            & Map & 2 & $+0.584$ & $0.999$ & N/A \\
 Standard map ($\kappa=1.2$) & Map & 2 & $+1.652$ & $0.996$ & N/A \\
 \midrule
 \multicolumn{6}{l}{\textit{Delay system ($\Sigma\lambda$ not applicable)}} \\
-Mackey--Glass ($\tau=17$) & Delay & $\infty$ & --- & $0.855$ & N/A \\
+Mackey--Glass ($\tau=17$) & Delay & $\infty$ & n.c.$^{\dagger}$ & $0.855$ & N/A \\
 \midrule
 \multicolumn{6}{l}{\textit{Non-chaotic controls}} \\
 Harmonic oscillator      & Control & 2 & $0.000$ & $0.599$ & N/A \\
@@ -183,7 +185,8 @@ $K\approx-0.13$ (mean over 4 initial conditions) at 4k steps to $K\approx0.99$ a
 16k steps; the coupled Duffing Hamiltonian moves from $K\approx-0.14$ at 4k to
 $K\approx0.94$ at 16k. This is the pattern one
 expects from a chaos detector whose finite-time behavior is governed by observable
-mixing time, not by whether the system is conservative.
+mixing time, not by whether the system is conservative
+(Section~\ref{sec:gk}).
 
 \begin{figure}[h]
 \centering
@@ -218,19 +221,20 @@ axis is symlog so both weak and strong contraction are visible.}
 \label{fig:disc}
 \end{figure}
 
-The Hamiltonian cases also pass integration hygiene: for the 7 systems with
-a tracked analytic invariant (energy or Jacobi integral), relative drift is
-at most $7\times10^{-4}$, and the measured largest Lyapunov exponent is positive
-for every chaotic Hamiltonian system. Thus the zero
-volume contraction is not a failure to reach chaos; it is the expected Liouville
-structure.
+The Hamiltonian cases also pass integration hygiene: all 8 systems conserve
+an analytic invariant (energy, or the Jacobi integral for CR3BP), and the relative
+drift in that invariant is at most $7\times10^{-4}$ over the run. The measured
+largest Lyapunov exponent is positive for every chaotic Hamiltonian system. Thus the
+zero volume contraction is not a failure to reach chaos; it is the expected
+Liouville structure.
 
 \subsection{Why the 0--1 failure happens}
 \label{sec:gk}
 
 The finite-time behavior of $K$ is not mysterious. For a mean-zero stationary
-observable with autocovariance $C(k)=E[\phi(j)\phi(j+k)]$, the 0--1 translation
-increment has exact mean-square displacement
+observable $\phi$ (mean-subtracted in the implementation) with autocovariance
+$C(k)=E[\phi(j)\phi(j+k)]$, expanding Eq.~\eqref{eq:Mc_def} and applying
+stationarity yields the exact mean-square displacement
 \begin{equation}
 M_c(n)=\sum_{k=-(n-1)}^{n-1}(n-|k|)C(k)\cos(kc)
       =nC(0)+2\sum_{k=1}^{n-1}(n-k)C(k)\cos(kc).
@@ -243,7 +247,7 @@ D_c=\lim_{n\to\infty}\frac{M_c(n)}{n}
 =C(0)+2\sum_{k\ge1}C(k)\cos(kc).
 \label{eq:dc}
 \end{equation}
-Since $K_c$ is the log--log slope/correlation computed from $M_c(n)$, the
+Since $K_c$ is the log--log correlation computed from $M_c(n)$, the
 observable autocovariance predicts the full length-dependent curve. In the
 artifacts, the predicted $K$ from Eq.~\eqref{eq:mc} matches measured $K$ with
 Pearson $r=0.955$ and mean absolute error $0.077$ (Fig.~\ref{fig:gk}); the
@@ -260,10 +264,10 @@ observable autocovariance alone.}
 
 \subsection{Held-out itinerary grammar: predict the climate, not the weather}
 
-The same observatory also measures symbolic attractor grammar. Each attractor is coarsened into cells by fitting k-means ($k\in\{4,6,8\}$
-cells tested; results reported at the representative $k=6$ unless otherwise noted)
-on the first half of the trajectory; an order-1 Markov model is then evaluated on
-a held-out second half. Raw next-symbol
+The same observatory also measures symbolic attractor grammar. Each attractor is
+coarsened into $k=6$ cells by k-means on the first half of the trajectory
+(results are robust to $k\in\{4,6,8\}$; all values are in the data artifacts); an
+order-1 Markov model is then evaluated on the held-out second half. Raw next-symbol
 accuracy across 23 chaotic systems is $0.925$, but most of that is trivial
 dwell-time persistence: finely sampled flows tend to remain in the same cell, and
 the persistence baseline is $0.863$. The non-trivial result conditions on the
@@ -335,6 +339,22 @@ predictable on held-out data. That distinction is useful for scientific machine
 learning systems because it separates impossible weather-like prediction from
 bounded climate-like structure.
 
+A notable pattern within the itinerary data: Hamiltonian systems achieve a higher
+mean held-out transition accuracy ($0.841$, $n=8$) than dissipative flows ($0.746$,
+$n=10$). This is the opposite of the naive expectation that strange attractors (with
+their lower-dimensional structure) would be easier to learn. The likely explanation
+is that several Hamiltonian systems in the benchmark are semi-ergodic: they orbit
+near KAM tori rather than filling the energy surface uniformly, producing highly
+predictable transition sequences. Four of the eight reach perfect held-out accuracy
+($1.000$). This suggests that the grammar learnability correlates more strongly with
+the regularity of the attractor's coarse geometry than with the sign of $\Sigma\lambda$.
+
+An additional note on the random walk control: Brownian motion (the position
+process) gives $K=0.045$ because the non-stationarity of the position observable
+causes $M_c(n)$ to grow anomalously slowly under the log--log measure. The 0--1
+test correctly identifies this as non-chaotic, but for a mechanically different
+reason than a bounded regular orbit.
+
 \section{Limitations and claim boundary}
 
 Supported claims are limited to the 26-system benchmark and the deterministic
@@ -352,6 +372,8 @@ conservative chaos has $K\approx0$; that reading is superseded here.
 Not supported: using the 0--1 statistic as a conservative/dissipative classifier;
 generalizing the benchmark to all chaotic systems without further validation;
 claiming a new theorem; or claiming long-horizon chaotic trajectory prediction.
+The manuscript intentionally preserves the self-disproved 0--1 result and the
+corrected claim boundary rather than deleting the error.
 
 \section{Reproducibility and data availability}
 \label{sec:repro}
@@ -367,8 +389,6 @@ All reported numbers are read from deterministic, seeded artifacts. Data and fig
 \path{results/chaos_itinerary_prediction.json}.
 \end{quote}
 Figures are regenerated by \path{scripts/chaos_make_figures.py}.
-The manuscript intentionally reports the corrected claim boundary and preserves
-the self-disproved 0--1 result rather than deleting it.
 
 \appendix
 
