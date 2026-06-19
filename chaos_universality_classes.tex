@@ -38,7 +38,12 @@ $K$-vs-length curve is predicted from the observable autocovariance by a closed-
 Green--Kubo expression (Pearson $r=0.955$ against measured $K$). A held-out
 symbolic-itinerary experiment further shows that attractor transition grammar is
 predictable ($0.770$ vs.\ $0.233$ baseline on cell changes, 21/23 chaotic systems
-beating baseline) even when microstate forecasts are Lyapunov-limited. The
+beating baseline) even when microstate forecasts are Lyapunov-limited. A battery of
+corroborating diagnostics---the $M_c$ growth exponent, autocorrelation-time
+observable selection, the correlation decay law, an effective run-length
+calculator, and order-$k$ route grammar---independently converges on the same
+reading: each is set by the observable's coarse-grained mixing rate, not by
+conservation structure. The
 contribution is a corrected discriminator, a reproducible warning about finite-time
 misuse of a widely used chaos statistic \cite{falconer2007}, and a bounded
 constructive result about predicting the climate, not the weather.
@@ -70,7 +75,11 @@ suggested that conservative chaos had $K\approx0$ while dissipative chaos had
 $K\approx1$. Longer trajectories and initial-condition ensembles overturned that
 reading. We therefore present the correction as part of the result: the 0--1 test
 remains useful as a chaos detector, but it should not be used as a
-conservative/dissipative classifier without additional structure.
+conservative/dissipative classifier without additional structure. Five further
+low-cost diagnostics (Secs.~\ref{sec:slope}--\ref{sec:markov}) reinforce the
+correction from independent angles---growth-rate exponent, observable selection,
+itinerary advantage, decay law, and route-grammar memory---each governed by the
+observable's coarse-grained mixing rate rather than by conservation.
 
 \section{Systems and measurements}
 
@@ -89,10 +98,12 @@ are tracked as integration hygiene checks.
 \caption{The 26-system benchmark. $\lambda_1$: largest Lyapunov exponent (positive
 = chaotic); ``n.c.''\ means not computed via global algorithm (Mackey--Glass
 requires delay-embedding; known value from the literature is $\lambda_1\approx0.007$
-for $\tau=17$). $K$: 0--1 statistic from the primary initial condition at 4000 steps
-($n_{\mathrm{steps,flow}}$); for slow-mixing Hamiltonians the ensemble mean over
-four initial conditions can differ substantially (double pendulum: $K=-0.13$
-at 4000 steps, mean over four ICs; see Fig.~\ref{fig:klen}). $\Sigma\lambda$: measured
+for $\tau=17$). $K$: 0--1 statistic for the primary initial condition, evaluated on the 0--1
+test's extended trajectory ($3\times$ the base $n_{\mathrm{steps,flow}}$,
+$N\approx12{,}000$ steps for the flows); for slow-mixing Hamiltonians $K$ is
+strongly length-dependent, so this value sits well above the short-run reading
+(double pendulum: $K=-0.13$ at $4{,}000$ steps, mean over four ICs, climbing
+toward one by $12$--$16$k; see Fig.~\ref{fig:klen}). $\Sigma\lambda$: measured
 phase-space volume contraction (N/A for maps and the delay system, which lack a
 finite-dimensional smooth vector field).}
 \label{tab:systems}
@@ -301,50 +312,60 @@ the same decimation procedure as Section~\ref{sec:gk}. The long-range sub-slope
 $\alpha_{\mathrm{lo}}$ ($n \ge N_{\mathrm{dec}}/2$) additionally characterises
 whether growth saturates at longer lags.
 
-\paragraph{$\alpha$--$K$ decoupling for Hamiltonian systems.}
-Four of eight Hamiltonian systems show a clear decoupling: CR3BP ($\alpha=0.847$),
-Pullen--Edmonds ($\alpha=0.694$), quartic coupled ($\alpha=0.888$), and spring
-pendulum ($\alpha=0.972$) all reach the diffusive regime while recording
-$K\in[-0.17,\,-0.07]$ in the same run (Table~\ref{tab:slope}, bold rows).
-The most striking example is the spring pendulum: starting from the identical
-initial condition used in Table~\ref{tab:systems}, $K$ falls from $0.979$ at
-4,000 steps to $-0.096$ at 12,000 steps, while $\alpha=0.972$ confirms
-$M_c$ is growing diffusively throughout both runs. The mechanism is direct.
-$\alpha$ is estimated from the mean $M_c(n)$ averaged over all 12 frequencies $c$,
-which smooths per-frequency noise. $K_c$, by contrast, is the \emph{median} Pearson
-correlation coefficient over individual per-$c$ curves; for slow-mixing Hamiltonians
-with competing KAM structure, the per-$c$ variance is high and the per-$c$
-log--log curves are non-monotonic, driving the median correlation negative even
-though the mean $M_c$ grows with slope near one.
-Yang--Mills shows $\alpha=-0.08$ (bounded $M_c$ at this run length);
-H\'{e}non--Heiles ($\alpha=0.95$, $K=0.51$), double pendulum ($\alpha=1.31$,
-$K=0.79$), and coupled Duffing ($\alpha=0.76$, $K=0.92$) show both measures
-consistently positive.
+\paragraph{$\alpha$--$K$ decoupling, and the fragility of $K$.}
+Two Hamiltonian systems show an $\alpha$--$K$ decoupling that survives frequency
+resampling: CR3BP ($\alpha=0.847$, $K=-0.05$) and quartic coupled ($\alpha=0.888$,
+$K=-0.11$) grow $M_c$ at slope near one yet keep a median $K$ below zero, with
+$83\%$ and $92\%$ of $12$-frequency draws falling below $0.3$
+(Fig.~\ref{fig:alphak}; Table~\ref{tab:slope}, bold). Pullen--Edmonds also holds $K$ low ($-0.05$, $92\%$
+below $0.3$) but its $M_c$ partially saturates ($\alpha_{\mathrm{lo}}=-0.15$), so
+its growth is not cleanly diffusive. The mechanism is direct: $\alpha$ is
+estimated from the mean $M_c(n)$ averaged over all frequencies, which smooths
+per-frequency noise, whereas $K_c$ is the \emph{median} per-$c$ log--log
+correlation; for slow-mixing Hamiltonians with competing KAM structure the
+per-$c$ curves are noisy and non-monotonic, holding the median near or below zero
+even though the mean $M_c$ grows with slope near one.
 
-\paragraph{Quasiperiodic length dependence.}
-The quasiperiodic 2-torus achieves $K=0.961$ at $N=4{,}000$ steps
-(Table~\ref{tab:systems}) but $K=-0.06$ and $\alpha=0.91$ at $N=12{,}000$ steps.
-This confirms that the high $K$ is a finite-trajectory artefact: near-resonant $c$
-values produce a visible $n^2$ transient that the log--log correlation records as
-near-one at short runs; longer trajectories reveal saturation.
-The long-range sub-slope $\alpha_{\mathrm{lo}}=0.37$ (partial saturation) versus
-$\alpha_{\mathrm{lo}}=-0.81$ for the harmonic oscillator (unambiguous saturation)
-shows that the sub-slope signature can flag periodic/quasiperiodic dynamics where
-the full slope cannot. Neither $\alpha$ alone nor $K$ alone reliably separates
-quasiperiodic from slow-mixing chaotic at finite trajectory lengths.
+This same per-$c$ variance makes $K$ itself fragile for these systems. Re-drawing
+the $12$ frequencies moves spring pendulum's median $K$ across $[-0.12,\,+0.96]$
+at fixed length and trajectory; its typical value is $+0.32$ (only half the draws
+below $0.3$), so a single negative reading is a sampling artifact, not a stable
+decoupling---indeed the main-lab 0--1 implementation returns $K\approx+0.98$ for
+the same spring-pendulum trajectory at $N=12{,}000$. CR3BP and
+quartic are not immune (their draws exceed $+0.9$ in places too) but stay low in
+the large majority of draws, which is why we treat only them as robust.
+Yang--Mills is separate, with $\alpha=-0.08$ (bounded $M_c$ at this length---neither
+diffusive nor a decoupling); H\'{e}non--Heiles ($\alpha=0.95$, $K=0.58$), double
+pendulum ($\alpha=1.31$, $K=0.71$) and coupled Duffing ($\alpha=0.76$, $K=0.94$)
+keep both measures positive. The lesson reinforces the central thesis: for
+slow-mixing systems the 0--1 $K$ is a finite-sampling estimate sensitive to the
+frequency draw, not a stable invariant.
+
+\paragraph{Quasiperiodic control and the sub-slope.}
+The non-chaotic controls expose the same frequency fragility. The main-lab 0--1
+reads $K=0.961$ for the quasiperiodic 2-torus (Table~\ref{tab:systems}), yet on the
+same $12{,}000$-step trajectory the slope pipeline's frequency-median is only
+$+0.10$ (range $[-0.16,\,+0.47]$, $\alpha=0.91$): a bounded, non-chaotic orbit
+whose 0--1 value swings with the frequency draw, exactly as the slow Hamiltonians
+do. Here the long-range sub-slope is decisive where $K$ is not:
+$\alpha_{\mathrm{lo}}=+0.37$ (partial saturation) for the 2-torus versus $-0.81$
+for the harmonic oscillator (unambiguous saturation) flags the bounded character
+that a single $K$ reading can miss. Neither $\alpha$ alone nor $K$ alone reliably
+separates quasiperiodic from slow-mixing chaotic at finite trajectory lengths.
 
 \begin{table}[ht]
 \centering
 \small
 \caption{Growth-rate exponent $\alpha$ at $N=12{,}000$ steps. $\alpha$:
 full-range log--log slope of $M_c(n)$; $\alpha_{\mathrm{lo}}$: long-range
-($n\ge N_{\mathrm{dec}}/2$) sub-slope; $K$: 0--1 correlation from the same
-12,000-step run (compare Table~\ref{tab:systems} for 4,000-step values; the
-decimation stride cap increases from 20 to 60 with the longer trajectories,
-which can lower $K$ for some dissipative flows without affecting $\alpha$).
-Negative $\alpha_{\mathrm{lo}}$ signals $M_c$ saturation. Bold: Hamiltonian
-systems with $\alpha\approx1$ yet $K\approx0$ (the $\alpha$--$K$ decoupling;
-see text). Full results in \path{results/chaos_slope_analysis.json}.}
+($n\ge N_{\mathrm{dec}}/2$) sub-slope; $K$: median 0--1 statistic over $12$
+random frequency seeds at this length (the main-lab pipeline of
+Table~\ref{tab:systems} can differ for slow-mixing Hamiltonians; a single
+12-frequency draw is c-sampling unstable for these systems---see text and the
+\texttt{K\_seed} fields of the JSON for per-system ranges). Negative $\alpha_{\mathrm{lo}}$ signals $M_c$ saturation.
+Bold: the two systems with $\alpha\approx1$ yet a robustly low $K$ (the
+$\alpha$--$K$ decoupling). Full results in
+\texttt{results/chaos\_slope\_analysis.json}.}
 \label{tab:slope}
 \begin{tabular}{llrrr}
 \toprule
@@ -352,26 +373,26 @@ System & Family & $\alpha$ & $\alpha_{\mathrm{lo}}$ & $K$ \\
 \midrule
 \multicolumn{5}{l}{\textit{Dissipative flows}} \\
 Lorenz 63              & Dissipative & $0.929$ & $+0.934$ & $+0.999$ \\
-R\"{o}ssler            & Dissipative & $0.615$ & $-0.254$ & $+0.567$ \\
-Duffing (forced)       & Dissipative & $0.916$ & $+0.995$ & $+0.276$ \\
-Lorenz 96 ($N=5$)     & Dissipative & $0.884$ & $+0.090$ & $+0.940$ \\
-Aizawa                 & Dissipative & $0.853$ & $+0.191$ & $+0.696$ \\
-Sprott B               & Dissipative & $0.956$ & $+0.969$ & $+0.997$ \\
-Halvorsen              & Dissipative & $1.018$ & $+1.331$ & $+0.957$ \\
-Thomas                 & Dissipative & $1.098$ & $+1.132$ & $+0.995$ \\
+R\"{o}ssler            & Dissipative & $0.615$ & $-0.254$ & $+0.712$ \\
+Duffing (forced)       & Dissipative & $0.916$ & $+0.995$ & $+0.322$ \\
+Lorenz 96 ($N=5$)     & Dissipative & $0.884$ & $+0.090$ & $+0.956$ \\
+Aizawa                 & Dissipative & $0.853$ & $+0.191$ & $+0.686$ \\
+Sprott B               & Dissipative & $0.956$ & $+0.969$ & $+0.998$ \\
+Halvorsen              & Dissipative & $1.018$ & $+1.331$ & $+0.964$ \\
+Thomas                 & Dissipative & $1.098$ & $+1.132$ & $+0.996$ \\
 Chen                   & Dissipative & $1.024$ & $+1.103$ & $+0.994$ \\
-Ueda (forced)          & Dissipative & $0.971$ & $+1.297$ & $+0.295$ \\
-Lorenz 96 ($N=10$)    & Dissipative & $0.902$ & $+0.978$ & $+0.998$ \\
+Ueda (forced)          & Dissipative & $0.971$ & $+1.297$ & $+0.347$ \\
+Lorenz 96 ($N=10$)    & Dissipative & $0.902$ & $+0.978$ & $+0.996$ \\
 \midrule
 \multicolumn{5}{l}{\textit{Hamiltonian flows}} \\
-Double pendulum                  & Hamiltonian & $1.312$ & $+1.296$ & $+0.792$ \\
-H\'{e}non--Heiles                & Hamiltonian & $0.949$ & $+1.111$ & $+0.509$ \\
-\textbf{CR3BP (Earth--Moon)}     & Hamiltonian & $\mathbf{0.847}$ & $+0.887$ & $\mathbf{-0.099}$ \\
-Yang--Mills ($x^2y^2$)           & Hamiltonian & $-0.083$ & $+0.275$ & $+0.094$ \\
-\textbf{Pullen--Edmonds}         & Hamiltonian & $\mathbf{0.694}$ & $-0.149$ & $\mathbf{-0.172}$ \\
-\textbf{Quartic coupled}         & Hamiltonian & $\mathbf{0.888}$ & $+1.061$ & $\mathbf{-0.071}$ \\
-\textbf{Spring pendulum}         & Hamiltonian & $\mathbf{0.972}$ & $+0.924$ & $\mathbf{-0.096}$ \\
-Coupled Duffing (Ham.)           & Hamiltonian & $0.759$ & $+0.912$ & $+0.917$ \\
+Double pendulum                  & Hamiltonian & $1.312$ & $+1.296$ & $+0.709$ \\
+H\'{e}non--Heiles                & Hamiltonian & $0.949$ & $+1.111$ & $+0.577$ \\
+\textbf{CR3BP (Earth--Moon)}     & Hamiltonian & $\mathbf{0.847}$ & $+0.887$ & $\mathbf{-0.046}$ \\
+Yang--Mills ($x^2y^2$)           & Hamiltonian & $-0.083$ & $+0.275$ & $+0.069$ \\
+Pullen--Edmonds                  & Hamiltonian & $0.694$ & $-0.149$ & $-0.049$ \\
+\textbf{Quartic coupled}         & Hamiltonian & $\mathbf{0.888}$ & $+1.061$ & $\mathbf{-0.108}$ \\
+Spring pendulum                  & Hamiltonian & $0.972$ & $+0.924$ & $+0.320$ \\
+Coupled Duffing (Ham.)           & Hamiltonian & $0.759$ & $+0.912$ & $+0.942$ \\
 \midrule
 \multicolumn{5}{l}{\textit{Maps}} \\
 Logistic ($r=3.9$)    & Map   & $1.011$ & $+1.107$ & $+0.999$ \\
@@ -379,15 +400,211 @@ H\'{e}non map         & Map   & $1.020$ & $+1.008$ & $+1.000$ \\
 Standard map          & Map   & $1.051$ & $+1.129$ & $+0.998$ \\
 \midrule
 \multicolumn{5}{l}{\textit{Delay system}} \\
-Mackey--Glass         & Delay & $1.400$ & $+1.539$ & $+0.805$ \\
+Mackey--Glass         & Delay & $1.400$ & $+1.539$ & $+0.733$ \\
 \midrule
 \multicolumn{5}{l}{\textit{Non-chaotic controls}} \\
-Harmonic oscillator   & Control & $0.543$ & $-0.806$ & $-0.111$ \\
-Quasiperiodic 2-torus & Control & $0.906$ & $+0.373$ & $-0.063$ \\
-Random walk           & Control & $0.008$ & $+0.162$ & $+0.140$ \\
+Harmonic oscillator   & Control & $0.543$ & $-0.806$ & $-0.090$ \\
+Quasiperiodic 2-torus & Control & $0.906$ & $+0.373$ & $+0.097$ \\
+Random walk           & Control & $0.008$ & $+0.162$ & $+0.157$ \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.74\textwidth]{fig6_alpha_K_decoupling}
+\caption{Growth exponent $\alpha$ versus the 0--1 $K$ (median over $12$ random
+frequency seeds; error bars span the seeds) at $N=12{,}000$ steps. CR3BP and
+quartic coupled occupy the decoupling corner---$\alpha\approx1$ yet $K<0$
+robustly. The long Hamiltonian error bars are the c-sampling fragility: a single
+frequency draw can place $K$ anywhere from $-0.2$ to $+1$ (spring pendulum),
+whereas fast-mixing dissipative flows and maps pin $K\approx1$ with negligible
+spread.}
+\label{fig:alphak}
+\end{figure}
+
+\subsection{Observable selection via autocorrelation screening}
+\label{sec:obs}
+
+For multi-dimensional systems, the 0--1 test requires selecting a scalar observable
+$\phi$.  All primary results (Table~\ref{tab:systems}) use the first state
+coordinate, but other coordinates can converge $K$ faster or slower.
+The Green--Kubo framework predicts the leading trend: a coordinate with shorter
+integrated autocorrelation time $\tau_{\mathrm{int}} = \sum_{k\ge0} C(k)/C(0)$
+reaches the asymptotic $M_c(n)\sim n$ regime sooner, giving a smaller crossover
+length $n_{1/2}$.
+
+The Rössler system makes this concrete (Fig.~\ref{fig:rossler}).  Using the same trajectory and $c$-values,
+the $z$ coordinate ($\tau_{\mathrm{int}}=7.5$ steps) exceeds $K=0.5$ at
+$N=1{,}000$ steps, while $y$ ($\tau_{\mathrm{int}}=12$ steps) does not cross until
+$N=8{,}000$ steps---an 8-fold speedup from coordinate choice, with $\tau_{\mathrm{int}}$
+correctly predicting the ordering. The physical reason is structural:
+Rössler $z$ captures the rare, rapidly-decorrelating spike events whose
+autocorrelation decays within tens of steps, whereas $x$ and $y$ record the slow spiral that
+takes many orbits to decorrelate, keeping $M_c(n)$ pre-asymptotic and
+depressing $K$ at short trajectory lengths.
+
+The relationship is directional but imperfect. For the double pendulum,
+$\theta_2$ ($\tau_{\mathrm{int}}=239$ steps) never converges within 16,000 steps,
+correctly identified as the worst choice by $\tau_{\mathrm{int}}$ screening.
+However, $p_2$ ($\tau_{\mathrm{int}}=84$ steps) converges \emph{faster} than
+$\theta_1$ ($\tau_{\mathrm{int}}=48$ steps) because its $K$ curve rises
+monotonically whereas $\theta_1$'s oscillates---dipping to $K=-0.15$ near
+$N=4{,}000$---before converging. Minimum $\tau_{\mathrm{int}}$ screens out catastrophically slow
+coordinates reliably; it does not guarantee the global minimum crossover length.
+Full per-coordinate convergence curves are in
+\path{results/chaos_observable_selection.json}.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.66\textwidth]{fig7_observable_selection}
+\caption{Observable selection for the Rössler system: the 0--1 $K$ versus
+trajectory length for each state coordinate. The $z$ coordinate
+($\tau_{\mathrm{int}}=7.5$) is already converged ($K\approx1$) at $N=1{,}000$
+steps, whereas $y$ ($\tau_{\mathrm{int}}=12$) does not cross $K=0.5$ until
+$N=8{,}000$. Shorter integrated autocorrelation time gives faster convergence.}
+\label{fig:rossler}
+\end{figure}
+
+\subsection{Itinerary predictability tracks mixing, not conservation}
+\label{sec:itin-adv}
+
+Does the held-out itinerary grammar (Fig.~\ref{fig:itin}) separate the two
+dynamical classes? We score each system by its genuine transition advantage
+$\mathrm{adv}=a_{\mathrm{trans}}-a_{\mathrm{base}}$, the gain of the order-1 move
+grammar over the most-common-destination baseline, evaluated only on the steps
+where the coarse cell actually changes. (The order-1-minus-order-0 lift is
+excluded; it is dominated by dwell-time persistence.) We require at least $100$
+cell changes per system, so the binomial standard error on $a_{\mathrm{trans}}$
+is at most $0.05$, and join the result to the largest (Benettin) Lyapunov
+exponent $\lambda_1$ (Table~\ref{tab:systems}) and the lab's $12{,}000$-step
+0--1 $K_{\mathrm{median}}$.
+
+At face value the Hamiltonians win: on the reliable subset
+$\overline{\mathrm{adv}}=0.835$ (four systems) against $0.564$ for the
+dissipative flows (eight systems), Mann--Whitney $p=0.022$, with a positive gap
+at every cell count $K\in\{4,6,8\}$ (gap $0.15$--$0.30$). This is \emph{not} an
+independent conservation classifier, for three reasons. First, the
+perfect-prediction ceiling $\mathrm{adv}=1-1/K$ is reached by a \emph{dissipative}
+flow---Halvorsen ($a_{\mathrm{trans}}=1.000$ over $327$ changes)---and, trivially,
+by the periodic harmonic control; perfect coarse prediction is not a conservation
+signature. Second, the $100$-change gate is a survivorship filter: it discards
+exactly the strongly chaotic Hamiltonians whose coarse itinerary is disordered
+(double pendulum $\mathrm{adv}=0.20$, Yang--Mills $0.12$) because they change
+cells too rarely to measure, inflating the surviving Hamiltonian mean. Third,
+the advantage anti-correlates with both mixing proxies (Fig.~\ref{fig:advk}): the 0--1 statistic
+(Spearman $r_s=-0.61$, $p=0.016$, unchanged under a second independent $K$
+estimator) and the Benettin Lyapunov exponent ($r_s=-0.59$, $p=0.03$). It is
+largest exactly where the dynamics mix slowest---low finite-time $K$ and low
+$\lambda_1$ together. The itinerary advantage is thus another face of slow
+coarse-grained mixing, not orthogonal evidence of conservation.
+
+The unifying axis is mixing rate. Weakly chaotic, dwell-dominated systems trace a
+nearly periodic coarse itinerary and saturate the ceiling, whether Hamiltonian
+(CR3BP, Pullen--Edmonds, quartic, Hénon--Heiles) or dissipative (Halvorsen);
+strongly mixing systems trace a disordered itinerary and score low, whether
+dissipative (Chen, $0.16$), a map (standard map, $0.23$), or Hamiltonian (double
+pendulum, Yang--Mills). As with the 0--1 test, coarse predictability measures how
+fast the chosen observable mixes, not whether phase-space volume is conserved.
+The picture is robust to the k-means symbolization: across $8$ cell seeds the
+advantage--$K$ Spearman stays in $[-0.70,-0.56]$ and the Hamiltonian mean exceeds
+the dissipative mean in every seed (\path{results/chaos_kmeans_robustness.json}).
+Data: \path{results/chaos_itinerary_advantage.json}.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.96\textwidth]{fig8_itinerary_advantage}
+\caption{Held-out itinerary transition-grammar advantage versus the two mixing
+proxies---the 0--1 $K_{\mathrm{median}}$ (left) and the Benettin $\lambda_1$
+(right)---over the reliable chaotic systems. The advantage falls as either proxy
+rises (Spearman $-0.61$ and $-0.59$) and does \emph{not} split by family:
+dissipative Halvorsen reaches the Hamiltonian ceiling, while dissipative Chen and
+the standard map sit lowest.}
+\label{fig:advk}
+\end{figure}
+
+\subsection{Decay law versus decay length}
+\label{sec:decay}
+
+A natural refinement asks not how \emph{fast} correlations decay but in what
+\emph{form}: a heavy power-law tail (sticky, intermittent dynamics) versus a
+short exponential one (hyperbolic mixing). Sticky tails are classically tied to
+mixed-phase-space Hamiltonians, making the decay law a candidate classifier. We
+test it directly: for each chaotic system we ensemble-average the normalized
+autocorrelation $\rho(k)$ of the first coordinate over four perturbed initial
+conditions and fit, over the resolvable initial decay ($\rho\ge0.05$), both
+$\rho=A\,e^{-k/\tau}$ and $\rho=A\,k^{-p}$, comparing $R^2$. The law does not
+separate the classes: the power-favored fraction is $0$ of $8$ Hamiltonians and
+$1$ of $11$ dissipative flows, and that lone power-favored fit lands on
+Lorenz-63---the textbook \emph{exponentially}-mixing attractor---at a small
+margin ($+0.16$ in $R^2$). This mislabelling is \emph{stable}, not sampling
+noise: across $10$ frequency-seed sets Lorenz-63 is power-favored in all $10$,
+while only two other systems are ever power-favored (each in $1$ of $10$). The
+failure is systematic---the genuine far tail lives below $\rho=0.05$ in the
+$O(1/\sqrt{MN})$ floor, and over the short resolvable window the oscillatory
+$\rho(k)$ of spiral flows is fit marginally better by a power law---so the
+exp-vs-power label is not a valid tail diagnostic. What \emph{is} robust is the decay
+\emph{length} $k^\ast$, the lags to reach $\rho=0.05$ (Fig.~\ref{fig:decaylaw}): it reproduces the lab
+mixing time almost exactly (Spearman $r_s=0.99$) and tracks the 0--1 crossover
+$n_{1/2}$ ($r_s=0.49$, $p=0.047$). The longest-memory systems---Yang--Mills
+($k^\ast=2515$), coupled Duffing ($2303$), and the standard map ($331$)---span
+the Hamiltonian and map families. Once again it is the conservation-blind mixing
+rate, not the decay form or the conservation structure, that the 0--1 test
+responds to. Data: \path{results/chaos_decay_law.json}.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.96\textwidth]{fig9_decay_law}
+\caption{Left: power-law versus exponential fit quality ($R^2$) for the
+resolvable initial autocorrelation decay; nearly all flows fall below the
+diagonal (exponential wins), the lone exception being Lorenz-63---a textbook
+exponential mixer---whose marginal power-favored fit is a stable artifact of the
+short, oscillation-confounded window (power-favored in all 10 frequency-seed
+sets), not a heavy tail.
+Right: the decay length $k^\ast$ tracks the 0--1 crossover $n_{1/2}$ across
+families (Spearman $0.49$). The decay \emph{law} does not classify; the decay
+\emph{length} does, and it is conservation-blind.}
+\label{fig:decaylaw}
+\end{figure}
+
+\subsection{Itinerary memory depth: order-1 is not the whole story}
+\label{sec:markov}
+
+How much memory does the coarse itinerary carry? On the raw symbol stream the
+question is unanswerable for flows: dwell time dominates, so order-1, order-2,
+and the predict-stay baseline coincide exactly (\S\ref{sec:itin-adv}). The grammar
+lives in the \emph{route}---the run-length-encoded sequence of distinct cells
+visited. We collapse each held-out symbol stream to its route and compare Markov
+orders $1$, $2$, $3$ (each backing off to lower orders) on the $18$ chaotic
+systems with at least $60$ held-out route steps.
+
+Memory depth is heterogeneous and conservation-blind (Fig.~\ref{fig:order2}). Half the systems ($8$ of
+$18$) gain from order-2, several substantially---Mackey--Glass
+($0.61\!\to\!0.94$), the standard map ($0.51\!\to\!0.76$), the spring pendulum
+($0.81\!\to\!0.97$), and Chen, which keeps improving through order-3
+($0.58\!\to\!0.73\!\to\!0.80$)---while the rest are order-1 Markov, including four
+Hamiltonians already at perfect order-1 route accuracy ($1.000$). The order-2
+gain does not separate the classes: mean $0.08$ (dissipative) versus $0.03$
+(Hamiltonian), Mann--Whitney $p=0.73$, with the largest gains spanning
+dissipative, map, and Hamiltonian families alike. As with every diagnostic in
+this section, what varies across systems is coarse dynamical structure---here the
+route's memory length---not the conservation of phase-space volume. This is robust
+to the k-means seed: across $8$ seeds dissipative systems always carry the larger
+gain and the Hamiltonian-vs-dissipative test is non-significant in $7$ of $8$
+($p\in[0.045,0.73]$); the lone marginal seed still favors dissipative, so no
+conservation split emerges (\path{results/chaos_kmeans_robustness.json}). Data:
+\path{results/chaos_markov_order.json}.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.74\textwidth]{fig10_markov_order}
+\caption{Order-2 minus order-1 held-out next-route accuracy for the reliable
+systems. The memory gain is heterogeneous and class-blind: the largest gains span
+dissipative (Mackey--Glass, Aizawa, Chen), map (standard map, logistic), and
+Hamiltonian (spring pendulum) systems, and the Hamiltonian-versus-dissipative
+difference is not significant (Mann--Whitney $p=0.73$).}
+\label{fig:order2}
+\end{figure}
 
 \section{Parameter sweeps and stress checks}
 
@@ -453,6 +670,11 @@ near KAM tori rather than filling the energy surface uniformly, producing highly
 predictable transition sequences. Four of the eight reach perfect held-out accuracy
 ($1.000$). This suggests that the grammar learnability correlates more strongly with
 the regularity of the attractor's coarse geometry than with the sign of $\Sigma\lambda$.
+Section~\ref{sec:itin-adv} makes this precise: the edge is \emph{not} an independent
+conservation classifier---a dissipative flow reaches the same ceiling, the gate that
+makes the comparison reliable discards the strongly chaotic Hamiltonians, and the
+advantage anti-correlates with $K$ ($r_s=-0.61$)---so it too tracks mixing rate,
+not conservation.
 
 An additional note on the random walk control: Brownian motion (the position
 process) gives $K=0.045$ because the non-stationarity of the position observable
@@ -491,12 +713,26 @@ All reported numbers are read from deterministic, seeded artifacts. Data and fig
 \path{results/chaos_mixing_time_analysis.json};
 \path{results/chaos_green_kubo.json};
 \path{results/chaos_parameter_sweep.json};
-\path{results/chaos_itinerary_prediction.json}; and
-\path{results/chaos_slope_analysis.json}.
+\path{results/chaos_itinerary_prediction.json};
+\path{results/chaos_slope_analysis.json};
+\path{results/chaos_observable_selection.json};
+\path{results/chaos_itinerary_advantage.json};
+\path{results/chaos_decay_law.json};
+\path{results/chaos_run_length.json};
+\path{results/chaos_markov_order.json}; and
+\path{results/chaos_kmeans_robustness.json}.
 \end{quote}
-Figures are regenerated by \path{scripts/chaos_make_figures.py}.
-The slope analysis (Table~\ref{tab:slope}) is regenerated by
-\path{scripts/chaos_slope_analysis.py}.
+Figures are regenerated by \path{scripts/chaos_make_figures.py} (main results,
+Figs.~1--5) and \path{scripts/chaos_extension_figures.py} (diagnostic battery,
+Figs.~\ref{fig:alphak}--\ref{fig:order2}). The slope analysis
+(Table~\ref{tab:slope}, \S\ref{sec:slope}), observable screening
+(\S\ref{sec:obs}), itinerary-advantage meta-analysis (\S\ref{sec:itin-adv}),
+decay-law analysis (\S\ref{sec:decay}), and order-$k$ route-grammar analysis
+(\S\ref{sec:markov}) are regenerated by the like-named scripts in
+\path{scripts/} (the decay-law and order-$k$ scripts import the system
+definitions from \path{chaos_slope_analysis.py}). The k-means seed-robustness of
+the \S\ref{sec:itin-adv} and \S\ref{sec:markov} verdicts is checked by
+\path{scripts/chaos_kmeans_robustness.py}.
 
 \appendix
 
@@ -514,6 +750,23 @@ Dissipative systems have median crossover near 3k steps,
 while Hamiltonian systems have median crossover near 12k steps. The relevant
 variable is therefore effective sample size after decorrelation, not conservation
 versus dissipation.
+
+This interpretation is operational. The same closed form gives a run-length
+calculator: from the observable autocovariance $C(k)$ it returns the smallest
+decimated sample count at which the predicted $K$ crosses a target threshold
+(multiply by the decimation stride for raw steps). Driven by the measured
+autocovariance it reproduces the ladder crossover for $14$ of $17$ systems
+exactly and $17$ of $17$ within one ladder step; on a controlled AR(1) observable
+$C(k)=\rho^k$ the returned length grows with
+$\tau_{\mathrm{int}}=(1+\rho)/(1-\rho)$, rising from $30$ to $500$ samples as
+$\rho$ runs $0.5\to0.98$, as required. When only a single scalar is
+known, the one-parameter rule $N\approx A\,\tau_{\mathrm{int}}$ with $A\approx65$
+(calibrated on the $16$ benchmark flows with a measurable crossover) gives an
+order-of-magnitude estimate---median fold-error $1.5\times$, $88\%$ within
+$3\times$, worst case $6.6\times$ (the coupled Duffing oscillator)---and applies
+to continuous-time flows only: maps decorrelate in a single step, so
+$\tau\approx1$ carries no length information. The calculator is
+\path{scripts/chaos_run_length.py}.
 
 \section{Reference table for the main claim}
 

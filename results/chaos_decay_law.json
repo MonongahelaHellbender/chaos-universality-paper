@@ -1,0 +1,577 @@
+{
+  "version": "chaos_decay_law/0.1.0",
+  "generated_utc": "2026-06-19T18:51:51+00:00",
+  "seed": 20260619,
+  "config": {
+    "n_analysis": 16000,
+    "m_ensemble": 4,
+    "perturb": 0.0001,
+    "rho_floor": 0.05,
+    "min_fit_pts": 6,
+    "kmax": 4000
+  },
+  "summary": {
+    "n_systems_fitted": 21,
+    "n_trivial_fast_decay": 2,
+    "class_by_family": {
+      "flow_delay": {
+        "n_fitted": 1,
+        "n_power": 0,
+        "n_exp": 1
+      },
+      "flow_dissipative": {
+        "n_fitted": 11,
+        "n_power": 1,
+        "n_exp": 10
+      },
+      "flow_hamiltonian": {
+        "n_fitted": 8,
+        "n_power": 0,
+        "n_exp": 8
+      },
+      "map": {
+        "n_fitted": 1,
+        "n_power": 0,
+        "n_exp": 1
+      }
+    },
+    "power_favored_systems": [
+      {
+        "name": "lorenz63",
+        "family": "flow_dissipative",
+        "margin": 0.1583,
+        "mixing_time_steps": 103.63493819747133
+      }
+    ],
+    "power_favored_families": [
+      "flow_dissipative"
+    ],
+    "frac_power_hamiltonian": 0.0,
+    "frac_power_dissipative": 0.091,
+    "decay_length_correlations": {
+      "k_decay_vs_n_half": {
+        "n": 17,
+        "rs": 0.487,
+        "p": 0.0472
+      },
+      "k_decay_vs_mixing_time": {
+        "n": 21,
+        "rs": 0.987,
+        "p": 0.0
+      },
+      "tau_exp_vs_n_half": {
+        "n": 17,
+        "rs": 0.524,
+        "p": 0.0307
+      }
+    },
+    "decay_law_separates_conservation": false,
+    "seed_stability": {
+      "n_seeds": 10,
+      "n_systems_ever_power_favored": 3,
+      "n_systems_always_power_favored": 1,
+      "max_power_favored_frac": 1.0,
+      "lorenz63_power_favored_frac": 1.0,
+      "per_system": [
+        {
+          "name": "lorenz63",
+          "family": "flow_dissipative",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 10,
+          "power_favored_frac": 1.0
+        },
+        {
+          "name": "rossler",
+          "family": "flow_dissipative",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "duffing_forced",
+          "family": "flow_dissipative",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "lorenz96_n5",
+          "family": "flow_dissipative",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "aizawa",
+          "family": "flow_dissipative",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "sprott_b",
+          "family": "flow_dissipative",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "halvorsen",
+          "family": "flow_dissipative",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "thomas",
+          "family": "flow_dissipative",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "chen",
+          "family": "flow_dissipative",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "ueda_forced",
+          "family": "flow_dissipative",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "lorenz96_n10",
+          "family": "flow_dissipative",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "double_pendulum",
+          "family": "flow_hamiltonian",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "henon_heiles",
+          "family": "flow_hamiltonian",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "cr3bp_earth_moon",
+          "family": "flow_hamiltonian",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "yang_mills_x2y2",
+          "family": "flow_hamiltonian",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 1,
+          "power_favored_frac": 0.1
+        },
+        {
+          "name": "pullen_edmonds",
+          "family": "flow_hamiltonian",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "quartic_coupled",
+          "family": "flow_hamiltonian",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "spring_pendulum",
+          "family": "flow_hamiltonian",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "coupled_duffing_ham",
+          "family": "flow_hamiltonian",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        },
+        {
+          "name": "standard_map_K1p2",
+          "family": "map",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 1,
+          "power_favored_frac": 0.1
+        },
+        {
+          "name": "mackey_glass",
+          "family": "flow_delay",
+          "n_seeds_fitted": 10,
+          "power_favored_count": 0,
+          "power_favored_frac": 0.0
+        }
+      ]
+    },
+    "caveat": "This fits the RESOLVABLE initial decay (rho down to 0.05). A far power-law tail lives where rho<0.05, in the O(1/sqrt(MN)) noise, and is not resolvable at these lengths; oscillatory correlations (spiral flows) further confound a 2-parameter monotone fit. The exp-vs-power label is therefore fragile, not a tail diagnostic.",
+    "interpretation": "Decay LAW (exp vs power) is not a usable classifier here. It does not split the classes (power-favored fraction 0.0 Hamiltonian, ~0.09 dissipative), and the lone power-favored fit lands on Lorenz-63 -- the textbook EXPONENTIALLY-mixing attractor -- at a small margin (+0.16 in R^2) that is STABLE across 10 frequency-seed sets (Lorenz-63 power-favored 10/10; only two other systems ever, each 1/10): a systematic confound (oscillatory rho over a short window), not sampling noise, and not a valid tail diagnostic. The genuinely slow decayers (Yang-Mills, coupled Duffing, standard map) span Hamiltonian and map families. The robust, conservation-blind scalar is the decay LENGTH k*, which reproduces the lab mixing time (Spearman ~0.99) and tracks n_half (~0.49) -- the mixing-rate story again, not conservation."
+  },
+  "systems": [
+    {
+      "name": "lorenz63",
+      "family": "flow_dissipative",
+      "rho1": 0.9984601586255596,
+      "k_decay": 178,
+      "n_fit_pts": 177,
+      "class": "power",
+      "r2_exp": 0.7472,
+      "r2_pow": 0.9054,
+      "margin_pow_minus_exp": 0.1583,
+      "tau_exp": 76.22,
+      "p_pow": 0.778,
+      "measured_n_half": 2000,
+      "mixing_time_steps": 103.63493819747133
+    },
+    {
+      "name": "rossler",
+      "family": "flow_dissipative",
+      "rho1": 0.9982604381862439,
+      "k_decay": 28,
+      "n_fit_pts": 27,
+      "class": "exp",
+      "r2_exp": 0.8309,
+      "r2_pow": 0.5334,
+      "margin_pow_minus_exp": -0.2975,
+      "tau_exp": 13.78,
+      "p_pow": 0.549,
+      "measured_n_half": 4000,
+      "mixing_time_steps": 35.9535822994495
+    },
+    {
+      "name": "duffing_forced",
+      "family": "flow_dissipative",
+      "rho1": 0.9995235075145006,
+      "k_decay": 72,
+      "n_fit_pts": 71,
+      "class": "exp",
+      "r2_exp": 0.8824,
+      "r2_pow": 0.5524,
+      "margin_pow_minus_exp": -0.33,
+      "tau_exp": 29.68,
+      "p_pow": 0.604,
+      "measured_n_half": 4000,
+      "mixing_time_steps": 84.5687919399883
+    },
+    {
+      "name": "lorenz96_n5",
+      "family": "flow_dissipative",
+      "rho1": 0.9941983570282314,
+      "k_decay": 17,
+      "n_fit_pts": 16,
+      "class": "exp",
+      "r2_exp": 0.8767,
+      "r2_pow": 0.612,
+      "margin_pow_minus_exp": -0.2647,
+      "tau_exp": 7.65,
+      "p_pow": 0.659,
+      "measured_n_half": 2000,
+      "mixing_time_steps": 20.831453695969717
+    },
+    {
+      "name": "aizawa",
+      "family": "flow_dissipative",
+      "rho1": 0.9993598212263408,
+      "k_decay": 44,
+      "n_fit_pts": 43,
+      "class": "exp",
+      "r2_exp": 0.7943,
+      "r2_pow": 0.4789,
+      "margin_pow_minus_exp": -0.3154,
+      "tau_exp": 20.45,
+      "p_pow": 0.543,
+      "measured_n_half": 8000,
+      "mixing_time_steps": 56.68119664002629
+    },
+    {
+      "name": "sprott_b",
+      "family": "flow_dissipative",
+      "rho1": 0.9996534292716325,
+      "k_decay": 102,
+      "n_fit_pts": 101,
+      "class": "exp",
+      "r2_exp": 0.9358,
+      "r2_pow": 0.6026,
+      "margin_pow_minus_exp": -0.3332,
+      "tau_exp": 34.26,
+      "p_pow": 0.739,
+      "measured_n_half": 4000,
+      "mixing_time_steps": 96.36459066657912
+    },
+    {
+      "name": "halvorsen",
+      "family": "flow_dissipative",
+      "rho1": 0.9983257980411545,
+      "k_decay": 34,
+      "n_fit_pts": 33,
+      "class": "exp",
+      "r2_exp": 0.8496,
+      "r2_pow": 0.5457,
+      "margin_pow_minus_exp": -0.304,
+      "tau_exp": 13.77,
+      "p_pow": 0.656,
+      "measured_n_half": 2000,
+      "mixing_time_steps": 39.65777236894146
+    },
+    {
+      "name": "thomas",
+      "family": "flow_dissipative",
+      "rho1": 0.9997952111150632,
+      "k_decay": 110,
+      "n_fit_pts": 109,
+      "class": "exp",
+      "r2_exp": 0.8768,
+      "r2_pow": 0.5318,
+      "margin_pow_minus_exp": -0.345,
+      "tau_exp": 44.05,
+      "p_pow": 0.6,
+      "measured_n_half": 8000,
+      "mixing_time_steps": 126.62329024208589
+    },
+    {
+      "name": "chen",
+      "family": "flow_dissipative",
+      "rho1": 0.9974312480143889,
+      "k_decay": 26,
+      "n_fit_pts": 25,
+      "class": "exp",
+      "r2_exp": 0.8252,
+      "r2_pow": 0.5327,
+      "margin_pow_minus_exp": -0.2925,
+      "tau_exp": 10.0,
+      "p_pow": 0.709,
+      "measured_n_half": 2000,
+      "mixing_time_steps": 29.971585515782927
+    },
+    {
+      "name": "ueda_forced",
+      "family": "flow_dissipative",
+      "rho1": 0.9970897637649824,
+      "k_decay": 28,
+      "n_fit_pts": 27,
+      "class": "exp",
+      "r2_exp": 0.8961,
+      "r2_pow": 0.6056,
+      "margin_pow_minus_exp": -0.2905,
+      "tau_exp": 10.57,
+      "p_pow": 0.734,
+      "measured_n_half": 2000,
+      "mixing_time_steps": 31.23292438999958
+    },
+    {
+      "name": "lorenz96_n10",
+      "family": "flow_dissipative",
+      "rho1": 0.9948753148038261,
+      "k_decay": 21,
+      "n_fit_pts": 20,
+      "class": "exp",
+      "r2_exp": 0.8988,
+      "r2_pow": 0.6263,
+      "margin_pow_minus_exp": -0.2725,
+      "tau_exp": 8.13,
+      "p_pow": 0.748,
+      "measured_n_half": 2000,
+      "mixing_time_steps": 23.36690381609608
+    },
+    {
+      "name": "double_pendulum",
+      "family": "flow_hamiltonian",
+      "rho1": 0.999834894200454,
+      "k_decay": 111,
+      "n_fit_pts": 110,
+      "class": "exp",
+      "r2_exp": 0.8225,
+      "r2_pow": 0.4774,
+      "margin_pow_minus_exp": -0.3451,
+      "tau_exp": 50.9,
+      "p_pow": 0.512,
+      "measured_n_half": 8000,
+      "mixing_time_steps": 140.4620988371594
+    },
+    {
+      "name": "henon_heiles",
+      "family": "flow_hamiltonian",
+      "rho1": 0.9996921034082742,
+      "k_decay": 79,
+      "n_fit_pts": 78,
+      "class": "exp",
+      "r2_exp": 0.7949,
+      "r2_pow": 0.4608,
+      "margin_pow_minus_exp": -0.3341,
+      "tau_exp": 37.14,
+      "p_pow": 0.507,
+      "measured_n_half": 16000,
+      "mixing_time_steps": 102.76041333226189
+    },
+    {
+      "name": "cr3bp_earth_moon",
+      "family": "flow_hamiltonian",
+      "rho1": 0.9996853684429639,
+      "k_decay": 71,
+      "n_fit_pts": 70,
+      "class": "exp",
+      "r2_exp": 0.786,
+      "r2_pow": 0.4563,
+      "margin_pow_minus_exp": -0.3297,
+      "tau_exp": 32.86,
+      "p_pow": 0.519,
+      "measured_n_half": null,
+      "mixing_time_steps": 91.79150787672091
+    },
+    {
+      "name": "yang_mills_x2y2",
+      "family": "flow_hamiltonian",
+      "rho1": 0.9999158661940676,
+      "k_decay": 2515,
+      "n_fit_pts": 2514,
+      "class": "exp",
+      "r2_exp": 0.9465,
+      "r2_pow": 0.7129,
+      "margin_pow_minus_exp": -0.2336,
+      "tau_exp": 1094.31,
+      "p_pow": 0.58,
+      "measured_n_half": null,
+      "mixing_time_steps": 3724.229353978986
+    },
+    {
+      "name": "pullen_edmonds",
+      "family": "flow_hamiltonian",
+      "rho1": 0.9993957228410977,
+      "k_decay": 48,
+      "n_fit_pts": 47,
+      "class": "exp",
+      "r2_exp": 0.7797,
+      "r2_pow": 0.4636,
+      "margin_pow_minus_exp": -0.3161,
+      "tau_exp": 21.52,
+      "p_pow": 0.555,
+      "measured_n_half": null,
+      "mixing_time_steps": 58.94700844372177
+    },
+    {
+      "name": "quartic_coupled",
+      "family": "flow_hamiltonian",
+      "rho1": 0.9997187161176277,
+      "k_decay": 75,
+      "n_fit_pts": 74,
+      "class": "exp",
+      "r2_exp": 0.7832,
+      "r2_pow": 0.4525,
+      "margin_pow_minus_exp": -0.3307,
+      "tau_exp": 34.67,
+      "p_pow": 0.516,
+      "measured_n_half": null,
+      "mixing_time_steps": 96.40410607392334
+    },
+    {
+      "name": "spring_pendulum",
+      "family": "flow_hamiltonian",
+      "rho1": 0.9995318991564138,
+      "k_decay": 56,
+      "n_fit_pts": 55,
+      "class": "exp",
+      "r2_exp": 0.7873,
+      "r2_pow": 0.4646,
+      "margin_pow_minus_exp": -0.3227,
+      "tau_exp": 25.73,
+      "p_pow": 0.534,
+      "measured_n_half": 8000,
+      "mixing_time_steps": 71.9637322681389
+    },
+    {
+      "name": "coupled_duffing_ham",
+      "family": "flow_hamiltonian",
+      "rho1": 0.9997970878974698,
+      "k_decay": 2303,
+      "n_fit_pts": 2302,
+      "class": "exp",
+      "r2_exp": 0.8721,
+      "r2_pow": 0.7055,
+      "margin_pow_minus_exp": -0.1665,
+      "tau_exp": 1179.02,
+      "p_pow": 0.511,
+      "measured_n_half": 16000,
+      "mixing_time_steps": 1609.6956984126878
+    },
+    {
+      "name": "logistic_r3p9",
+      "family": "map",
+      "rho1": -0.5015596718637161,
+      "k_decay": 1,
+      "n_fit_pts": 0,
+      "class": "trivial",
+      "note": "decay too fast to fit",
+      "r2_exp": null,
+      "r2_pow": null,
+      "margin_pow_minus_exp": null,
+      "tau_exp": null,
+      "p_pow": null,
+      "measured_n_half": 2000,
+      "mixing_time_steps": 1.0
+    },
+    {
+      "name": "henon_map",
+      "family": "map",
+      "rho1": -0.314567310431888,
+      "k_decay": 1,
+      "n_fit_pts": 0,
+      "class": "trivial",
+      "note": "decay too fast to fit",
+      "r2_exp": null,
+      "r2_pow": null,
+      "margin_pow_minus_exp": null,
+      "tau_exp": null,
+      "p_pow": null,
+      "measured_n_half": 2000,
+      "mixing_time_steps": 1.0
+    },
+    {
+      "name": "standard_map_K1p2",
+      "family": "map",
+      "rho1": 0.5725424743717198,
+      "k_decay": 331,
+      "n_fit_pts": 330,
+      "class": "exp",
+      "r2_exp": 0.9164,
+      "r2_pow": 0.8759,
+      "margin_pow_minus_exp": -0.0404,
+      "tau_exp": 201.11,
+      "p_pow": 0.479,
+      "measured_n_half": 2000,
+      "mixing_time_steps": 892.4202015504322
+    },
+    {
+      "name": "mackey_glass",
+      "family": "flow_delay",
+      "rho1": 0.999875761536281,
+      "k_decay": 117,
+      "n_fit_pts": 116,
+      "class": "exp",
+      "r2_exp": 0.821,
+      "r2_pow": 0.4754,
+      "margin_pow_minus_exp": -0.3456,
+      "tau_exp": 53.28,
+      "p_pow": 0.514,
+      "measured_n_half": 16000,
+      "mixing_time_steps": 145.41235490802987
+    }
+  ]
+}

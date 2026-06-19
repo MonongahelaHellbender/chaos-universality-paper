@@ -1,0 +1,284 @@
+{
+  "version": "chaos_run_length/0.1.0",
+  "generated_utc": "2026-06-19T08:22:11+00:00",
+  "inputs": {
+    "green_kubo": "chaos_green_kubo.json",
+    "mixing_time": "chaos_mixing_time_analysis.json"
+  },
+  "config": {
+    "ladder": [
+      2000,
+      4000,
+      8000,
+      16000,
+      32000
+    ],
+    "threshold": 0.5,
+    "n_c": 12,
+    "tau_floor_steps": 2.0
+  },
+  "summary": {
+    "exact_calculator": {
+      "n": 17,
+      "exact_match": 14,
+      "within_one_ladder_step": 17
+    },
+    "quick_rule": {
+      "A_median_n_half_over_tau": 65.4,
+      "n_flows": 16,
+      "ratio_iqr": [
+        49.6,
+        110.3
+      ],
+      "ratio_range": [
+        9.9,
+        155.7
+      ],
+      "median_fold_error": 1.52,
+      "max_fold_error": 6.58,
+      "frac_within_2x": 0.75,
+      "frac_within_3x": 0.88
+    },
+    "quick_rule_formula": "N_steps ~ A * tau_int  (A = 65; flows only)",
+    "ar1_check": {
+      "rows": [
+        {
+          "rho": 0.5,
+          "tau_int": 3.0,
+          "effective_n_samples": 30
+        },
+        {
+          "rho": 0.8,
+          "tau_int": 9.0,
+          "effective_n_samples": 30
+        },
+        {
+          "rho": 0.9,
+          "tau_int": 19.0,
+          "effective_n_samples": 60
+        },
+        {
+          "rho": 0.95,
+          "tau_int": 39.0,
+          "effective_n_samples": 125
+        },
+        {
+          "rho": 0.98,
+          "tau_int": 99.0,
+          "effective_n_samples": 500
+        }
+      ],
+      "monotone_increasing_in_tau": true
+    },
+    "recommendation": "Use effective_run_length(C, c_values) when the autocovariance is available: it reproduces the measured ladder crossover (14/17 exact, 17/17 within one ladder step). The one-scalar rule N ~ 65*tau is an order-of-magnitude guide for flows (median fold-error 1.5x, 88% within 3x) and does not apply to maps."
+  },
+  "systems": [
+    {
+      "name": "lorenz63",
+      "family": "flow_dissipative",
+      "tau_steps": 103.63493819747133,
+      "measured_n_half": 2000,
+      "exact_predicted_n_half": 2000,
+      "n_half_over_tau": 19.3,
+      "is_map_floor": false
+    },
+    {
+      "name": "rossler",
+      "family": "flow_dissipative",
+      "tau_steps": 35.9535822994495,
+      "measured_n_half": 4000,
+      "exact_predicted_n_half": 4000,
+      "n_half_over_tau": 111.3,
+      "is_map_floor": false
+    },
+    {
+      "name": "duffing_forced",
+      "family": "flow_dissipative",
+      "tau_steps": 84.5687919399883,
+      "measured_n_half": 4000,
+      "exact_predicted_n_half": 4000,
+      "n_half_over_tau": 47.3,
+      "is_map_floor": false
+    },
+    {
+      "name": "lorenz96_n5",
+      "family": "flow_dissipative",
+      "tau_steps": 20.831453695969717,
+      "measured_n_half": 2000,
+      "exact_predicted_n_half": 2000,
+      "n_half_over_tau": 96.0,
+      "is_map_floor": false
+    },
+    {
+      "name": "aizawa",
+      "family": "flow_dissipative",
+      "tau_steps": 56.68119664002629,
+      "measured_n_half": 8000,
+      "exact_predicted_n_half": 8000,
+      "n_half_over_tau": 141.1,
+      "is_map_floor": false
+    },
+    {
+      "name": "sprott_b",
+      "family": "flow_dissipative",
+      "tau_steps": 96.36459066657912,
+      "measured_n_half": 4000,
+      "exact_predicted_n_half": 4000,
+      "n_half_over_tau": 41.5,
+      "is_map_floor": false
+    },
+    {
+      "name": "halvorsen",
+      "family": "flow_dissipative",
+      "tau_steps": 39.65777236894146,
+      "measured_n_half": 2000,
+      "exact_predicted_n_half": 2000,
+      "n_half_over_tau": 50.4,
+      "is_map_floor": false
+    },
+    {
+      "name": "thomas",
+      "family": "flow_dissipative",
+      "tau_steps": 126.62329024208589,
+      "measured_n_half": 8000,
+      "exact_predicted_n_half": 4000,
+      "n_half_over_tau": 63.2,
+      "is_map_floor": false
+    },
+    {
+      "name": "chen",
+      "family": "flow_dissipative",
+      "tau_steps": 29.971585515782927,
+      "measured_n_half": 2000,
+      "exact_predicted_n_half": 2000,
+      "n_half_over_tau": 66.7,
+      "is_map_floor": false
+    },
+    {
+      "name": "ueda_forced",
+      "family": "flow_dissipative",
+      "tau_steps": 31.23292438999958,
+      "measured_n_half": 2000,
+      "exact_predicted_n_half": 2000,
+      "n_half_over_tau": 64.0,
+      "is_map_floor": false
+    },
+    {
+      "name": "lorenz96_n10",
+      "family": "flow_dissipative",
+      "tau_steps": 23.36690381609608,
+      "measured_n_half": 2000,
+      "exact_predicted_n_half": 2000,
+      "n_half_over_tau": 85.6,
+      "is_map_floor": false
+    },
+    {
+      "name": "double_pendulum",
+      "family": "flow_hamiltonian",
+      "tau_steps": 140.4620988371594,
+      "measured_n_half": 8000,
+      "exact_predicted_n_half": 8000,
+      "n_half_over_tau": 57.0,
+      "is_map_floor": false
+    },
+    {
+      "name": "henon_heiles",
+      "family": "flow_hamiltonian",
+      "tau_steps": 102.76041333226189,
+      "measured_n_half": 16000,
+      "exact_predicted_n_half": null,
+      "n_half_over_tau": 155.7,
+      "is_map_floor": false
+    },
+    {
+      "name": "cr3bp_earth_moon",
+      "family": "flow_hamiltonian",
+      "tau_steps": 91.79150787672091,
+      "measured_n_half": null,
+      "exact_predicted_n_half": null,
+      "n_half_over_tau": null,
+      "is_map_floor": false
+    },
+    {
+      "name": "yang_mills_x2y2",
+      "family": "flow_hamiltonian",
+      "tau_steps": 3724.229353978986,
+      "measured_n_half": null,
+      "exact_predicted_n_half": 16000,
+      "n_half_over_tau": null,
+      "is_map_floor": false
+    },
+    {
+      "name": "pullen_edmonds",
+      "family": "flow_hamiltonian",
+      "tau_steps": 58.94700844372177,
+      "measured_n_half": null,
+      "exact_predicted_n_half": null,
+      "n_half_over_tau": null,
+      "is_map_floor": false
+    },
+    {
+      "name": "quartic_coupled",
+      "family": "flow_hamiltonian",
+      "tau_steps": 96.40410607392334,
+      "measured_n_half": null,
+      "exact_predicted_n_half": null,
+      "n_half_over_tau": null,
+      "is_map_floor": false
+    },
+    {
+      "name": "spring_pendulum",
+      "family": "flow_hamiltonian",
+      "tau_steps": 71.9637322681389,
+      "measured_n_half": 8000,
+      "exact_predicted_n_half": null,
+      "n_half_over_tau": 111.2,
+      "is_map_floor": false
+    },
+    {
+      "name": "coupled_duffing_ham",
+      "family": "flow_hamiltonian",
+      "tau_steps": 1609.6956984126878,
+      "measured_n_half": 16000,
+      "exact_predicted_n_half": 8000,
+      "n_half_over_tau": 9.9,
+      "is_map_floor": false
+    },
+    {
+      "name": "logistic_r3p9",
+      "family": "map",
+      "tau_steps": 1.0,
+      "measured_n_half": 2000,
+      "exact_predicted_n_half": 2000,
+      "n_half_over_tau": 2000.0,
+      "is_map_floor": true
+    },
+    {
+      "name": "henon_map",
+      "family": "map",
+      "tau_steps": 1.0,
+      "measured_n_half": 2000,
+      "exact_predicted_n_half": 2000,
+      "n_half_over_tau": 2000.0,
+      "is_map_floor": true
+    },
+    {
+      "name": "standard_map_K1p2",
+      "family": "map",
+      "tau_steps": 892.4202015504322,
+      "measured_n_half": 2000,
+      "exact_predicted_n_half": 2000,
+      "n_half_over_tau": 2.2,
+      "is_map_floor": true
+    },
+    {
+      "name": "mackey_glass_tau17",
+      "family": "flow_dissipative",
+      "tau_steps": 145.41235490802987,
+      "measured_n_half": 16000,
+      "exact_predicted_n_half": 8000,
+      "n_half_over_tau": 110.0,
+      "is_map_floor": false
+    }
+  ]
+}

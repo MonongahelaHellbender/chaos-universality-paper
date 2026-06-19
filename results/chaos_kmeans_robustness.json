@@ -1,0 +1,134 @@
+{
+  "version": "chaos_kmeans_robustness/0.1.0",
+  "generated_utc": "2026-06-19T18:55:11+00:00",
+  "config": {
+    "k_cells": 6,
+    "n_analysis": 16000,
+    "seeds": [
+      9995,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "min_changes": 100,
+    "min_route": 60
+  },
+  "summary": {
+    "n_seeds": 8,
+    "C_adv_vs_K_spearman_range": [
+      -0.7,
+      -0.559
+    ],
+    "C_adv_K_always_negative": true,
+    "C_ham_above_diss_all_seeds": true,
+    "F_mwu_p_range": [
+      0.045,
+      0.73
+    ],
+    "F_n_seeds_nonsignificant": 7,
+    "F_diss_gain_always_above_ham": true,
+    "interpretation": "Both verdicts survive k-means re-seeding. (C) The transition advantage anti-correlates with the 0-1 K under every seed (Spearman in [-0.70,-0.56]) and Hamiltonians stay above dissipative on the reliable subset, so the sec 3.7 reading (advantage tracks mixing, not an independent conservation classifier) is not a symbolization artifact. (F) The order-2 memory gain is non-significant in 7 of 8 seeds (Hamiltonian vs dissipative MWU p in [0.045,0.73]); dissipative systems carry the larger gain in all 8 seeds, so the lone marginal dip is a route-data-richness effect, NOT a conservation signal -- consistent with the sec 3.9 verdict that memory depth does not classify."
+  },
+  "per_seed": [
+    {
+      "seed": 9995,
+      "C_n_reliable": 16,
+      "C_mean_adv_ham": 0.771,
+      "C_mean_adv_diss": 0.583,
+      "C_mwu_p_ham_vs_diss": 0.1274,
+      "C_adv_vs_K_spearman": -0.559,
+      "F_n_reliable": 18,
+      "F_mean_gain_ham": 0.033,
+      "F_mean_gain_diss": 0.082,
+      "F_mwu_p_ham_vs_diss": 0.7298
+    },
+    {
+      "seed": 1,
+      "C_n_reliable": 15,
+      "C_mean_adv_ham": 0.762,
+      "C_mean_adv_diss": 0.574,
+      "C_mwu_p_ham_vs_diss": 0.048,
+      "C_adv_vs_K_spearman": -0.668,
+      "F_n_reliable": 19,
+      "F_mean_gain_ham": 0.028,
+      "F_mean_gain_diss": 0.087,
+      "F_mwu_p_ham_vs_diss": 0.2971
+    },
+    {
+      "seed": 2,
+      "C_n_reliable": 16,
+      "C_mean_adv_ham": 0.772,
+      "C_mean_adv_diss": 0.579,
+      "C_mwu_p_ham_vs_diss": 0.1274,
+      "C_adv_vs_K_spearman": -0.65,
+      "F_n_reliable": 18,
+      "F_mean_gain_ham": 0.033,
+      "F_mean_gain_diss": 0.086,
+      "F_mwu_p_ham_vs_diss": 0.2069
+    },
+    {
+      "seed": 3,
+      "C_n_reliable": 15,
+      "C_mean_adv_ham": 0.772,
+      "C_mean_adv_diss": 0.579,
+      "C_mwu_p_ham_vs_diss": 0.202,
+      "C_adv_vs_K_spearman": -0.625,
+      "F_n_reliable": 19,
+      "F_mean_gain_ham": 0.033,
+      "F_mean_gain_diss": 0.082,
+      "F_mwu_p_ham_vs_diss": 0.6021
+    },
+    {
+      "seed": 4,
+      "C_n_reliable": 16,
+      "C_mean_adv_ham": 0.772,
+      "C_mean_adv_diss": 0.568,
+      "C_mwu_p_ham_vs_diss": 0.1274,
+      "C_adv_vs_K_spearman": -0.676,
+      "F_n_reliable": 19,
+      "F_mean_gain_ham": 0.028,
+      "F_mean_gain_diss": 0.105,
+      "F_mwu_p_ham_vs_diss": 0.1352
+    },
+    {
+      "seed": 5,
+      "C_n_reliable": 16,
+      "C_mean_adv_ham": 0.78,
+      "C_mean_adv_diss": 0.558,
+      "C_mwu_p_ham_vs_diss": 0.0231,
+      "C_adv_vs_K_spearman": -0.675,
+      "F_n_reliable": 19,
+      "F_mean_gain_ham": 0.024,
+      "F_mean_gain_diss": 0.103,
+      "F_mwu_p_ham_vs_diss": 0.2126
+    },
+    {
+      "seed": 6,
+      "C_n_reliable": 15,
+      "C_mean_adv_ham": 0.834,
+      "C_mean_adv_diss": 0.584,
+      "C_mwu_p_ham_vs_diss": 0.0162,
+      "C_adv_vs_K_spearman": -0.7,
+      "F_n_reliable": 18,
+      "F_mean_gain_ham": 0.0,
+      "F_mean_gain_diss": 0.097,
+      "F_mwu_p_ham_vs_diss": 0.0451
+    },
+    {
+      "seed": 7,
+      "C_n_reliable": 15,
+      "C_mean_adv_ham": 0.771,
+      "C_mean_adv_diss": 0.579,
+      "C_mwu_p_ham_vs_diss": 0.1432,
+      "C_adv_vs_K_spearman": -0.609,
+      "F_n_reliable": 19,
+      "F_mean_gain_ham": 0.029,
+      "F_mean_gain_diss": 0.083,
+      "F_mwu_p_ham_vs_diss": 0.1693
+    }
+  ]
+}

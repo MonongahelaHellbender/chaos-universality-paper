@@ -32,6 +32,7 @@ TARGET_SAMPLES = 1500    # target number of samples after decimation (matches la
 N_LAG_GRID = 30          # number of lag points for slope fit
 SHORT_LAG_FRAC = 0.25    # fit α_short over lags ≤ this fraction of n_max
 LONG_LAG_FRAC  = 0.50    # fit α_long  over lags ≥ this fraction of n_max
+N_C_SEEDS  = 12          # random frequency seeds for the c-sampling robustness sweep
 
 # ── integrators ────────────────────────────────────────────────────────────
 
@@ -372,6 +373,24 @@ def main():
             alpha_long,  _        = fit_slope(lag_grid, Mc_mean, frac_lo=LONG_LAG_FRAC)
             K_median = float(np.median(K_per_c)) if K_per_c else float('nan')
 
+        # c-sampling robustness: the K reported above is one finite-frequency
+        # draw (seed 31). For slow-mixing Hamiltonians the 12-frequency median is
+        # itself unstable, so we re-evaluate K over N_C_SEEDS random frequency
+        # seeds and record the spread. K_seed_median is the robust per-system K.
+        seed_Ks = []
+        for cs in range(N_C_SEEDS):
+            cv = np.random.default_rng(cs).uniform(math.pi/5., 4.*math.pi/5., size=N_C)
+            r = compute_Mc_and_slope(phi, cv, N_LAG_GRID, TARGET_SAMPLES)
+            if r[0] is not None and r[3]:
+                seed_Ks.append(float(np.median(r[3])))
+        if seed_Ks:
+            arr = np.array(seed_Ks)
+            k_seed_median = float(np.median(arr))
+            k_seed_lo, k_seed_hi = float(arr.min()), float(arr.max())
+            k_frac_low = float(np.mean(arr < 0.3))
+        else:
+            k_seed_median = k_seed_lo = k_seed_hi = k_frac_low = float('nan')
+
         label = classify(alpha_full)
 
         print(f" stride={stride:3d}  α={alpha_full:.3f}  "
@@ -388,6 +407,10 @@ def main():
             'alpha_long':  _r(alpha_long),
             'r2_full':     _r(r2_full),
             'K_median':    _r(K_median),
+            'K_seed_median': _r(k_seed_median),
+            'K_seed_lo':   _r(k_seed_lo),
+            'K_seed_hi':   _r(k_seed_hi),
+            'K_frac_below_0p3': _r(k_frac_low),
             'label':       label,
             'lag_grid':    [int(l) for l in lag_grid] if lag_grid is not None else [],
             'Mc_mean':     [_r(v) for v in Mc_mean] if Mc_mean is not None else [],
@@ -405,6 +428,7 @@ def main():
             'n_lag_grid':    N_LAG_GRID,
             'short_lag_frac': SHORT_LAG_FRAC,
             'long_lag_frac':  LONG_LAG_FRAC,
+            'n_c_seeds':     N_C_SEEDS,
             'c_range':       [math.pi/5., 4.*math.pi/5.],
         },
         'classification_rule': 'alpha_full < 0.5 → regular; 0.5-1.5 → chaotic; > 1.5 → quasiperiodic',

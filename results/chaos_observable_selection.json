@@ -1,0 +1,624 @@
+{
+  "version": "chaos_observable_selection/0.1.0",
+  "generated_utc": "2026-06-19T07:18:20.746305+00:00",
+  "seed": 20260619,
+  "config": {
+    "n_warmup": 0,
+    "n_analysis": 4000,
+    "n_c": 12,
+    "lengths": [
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "target_samples": 1500
+  },
+  "pooled_spearman_rs": -0.315,
+  "pooled_spearman_p": 0.2352,
+  "n_coord_matches": 2,
+  "n_systems": 5,
+  "systems": [
+    {
+      "name": "lorenz63",
+      "label": "Lorenz 63",
+      "n_coords": 3,
+      "best_coord_by_tau": 2,
+      "best_coord_by_K": 0,
+      "tau_K_spearman_rs": 1.0,
+      "tau_K_spearman_p": 0.0,
+      "coords": [
+        {
+          "index": 0,
+          "name": "x",
+          "tau_int": 47.09,
+          "decorr_lag": 101,
+          "K_final": 0.9984,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": -0.672,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.8632,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.9897,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.9963,
+              "stride": 40
+            },
+            {
+              "n": 16000,
+              "K": 0.9984,
+              "stride": 80
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "name": "y",
+          "tau_int": 33.35,
+          "decorr_lag": 37,
+          "K_final": 0.9978,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": -0.5206,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.9714,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.9954,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.9989,
+              "stride": 39
+            },
+            {
+              "n": 16000,
+              "K": 0.9978,
+              "stride": 37
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "name": "z",
+          "tau_int": 7.49,
+          "decorr_lag": 17,
+          "K_final": 0.9855,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": -0.2334,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.9276,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.9548,
+              "stride": 17
+            },
+            {
+              "n": 8000,
+              "K": 0.9744,
+              "stride": 17
+            },
+            {
+              "n": 16000,
+              "K": 0.9855,
+              "stride": 17
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rossler",
+      "label": "R\u00f6ssler",
+      "n_coords": 3,
+      "best_coord_by_tau": 2,
+      "best_coord_by_K": 2,
+      "tau_K_spearman_rs": -0.5,
+      "tau_K_spearman_p": 0.6667,
+      "coords": [
+        {
+          "index": 0,
+          "name": "x",
+          "tau_int": 11.29,
+          "decorr_lag": 26,
+          "K_final": 0.7613,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": -0.0222,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.2445,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.7679,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.7126,
+              "stride": 26
+            },
+            {
+              "n": 16000,
+              "K": 0.7613,
+              "stride": 26
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "name": "y",
+          "tau_int": 12.01,
+          "decorr_lag": 27,
+          "K_final": 0.8393,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": -0.0617,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": -0.03,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.4792,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.6775,
+              "stride": 27
+            },
+            {
+              "n": 16000,
+              "K": 0.8393,
+              "stride": 27
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "name": "z",
+          "tau_int": 7.54,
+          "decorr_lag": 13,
+          "K_final": 0.9887,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": 0.992,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.9994,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.9989,
+              "stride": 13
+            },
+            {
+              "n": 8000,
+              "K": 0.9933,
+              "stride": 13
+            },
+            {
+              "n": 16000,
+              "K": 0.9887,
+              "stride": 13
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "chen",
+      "label": "Chen",
+      "n_coords": 3,
+      "best_coord_by_tau": 1,
+      "best_coord_by_K": 1,
+      "tau_K_spearman_rs": -0.5,
+      "tau_K_spearman_p": 0.6667,
+      "coords": [
+        {
+          "index": 0,
+          "name": "x",
+          "tau_int": 10.47,
+          "decorr_lag": 22,
+          "K_final": 0.9933,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": -0.1336,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.9841,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.9925,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.9973,
+              "stride": 21
+            },
+            {
+              "n": 16000,
+              "K": 0.9933,
+              "stride": 22
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "name": "y",
+          "tau_int": 9.93,
+          "decorr_lag": 20,
+          "K_final": 0.9958,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": -0.0745,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.9896,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.9938,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.9977,
+              "stride": 19
+            },
+            {
+              "n": 16000,
+              "K": 0.9958,
+              "stride": 20
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "name": "z",
+          "tau_int": 15.77,
+          "decorr_lag": 32,
+          "K_final": 0.9946,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": 0.1001,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.8665,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.9933,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.9967,
+              "stride": 33
+            },
+            {
+              "n": 16000,
+              "K": 0.9946,
+              "stride": 32
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "halvorsen",
+      "label": "Halvorsen",
+      "n_coords": 3,
+      "best_coord_by_tau": 2,
+      "best_coord_by_K": 1,
+      "tau_K_spearman_rs": 0.5,
+      "tau_K_spearman_p": 0.6667,
+      "coords": [
+        {
+          "index": 0,
+          "name": "x",
+          "tau_int": 13.71,
+          "decorr_lag": 29,
+          "K_final": 0.9813,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": -0.107,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.7171,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.956,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.9704,
+              "stride": 29
+            },
+            {
+              "n": 16000,
+              "K": 0.9813,
+              "stride": 29
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "name": "y",
+          "tau_int": 13.85,
+          "decorr_lag": 29,
+          "K_final": 0.9832,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": -0.1683,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.7559,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.9727,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.959,
+              "stride": 29
+            },
+            {
+              "n": 16000,
+              "K": 0.9832,
+              "stride": 29
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "name": "z",
+          "tau_int": 13.4,
+          "decorr_lag": 28,
+          "K_final": 0.982,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": -0.1737,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.5809,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.9583,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.9651,
+              "stride": 29
+            },
+            {
+              "n": 16000,
+              "K": 0.982,
+              "stride": 28
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "double_pendulum",
+      "label": "Double pendulum",
+      "n_coords": 4,
+      "best_coord_by_tau": 0,
+      "best_coord_by_K": 3,
+      "tau_K_spearman_rs": -0.4,
+      "tau_K_spearman_p": 0.6,
+      "coords": [
+        {
+          "index": 0,
+          "name": "\u03b8\u2081",
+          "tau_int": 48.01,
+          "decorr_lag": 101,
+          "K_final": 0.8973,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": -0.0142,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.0653,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": -0.146,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.4682,
+              "stride": 40
+            },
+            {
+              "n": 16000,
+              "K": 0.8973,
+              "stride": 80
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "name": "\u03b8\u2082",
+          "tau_int": 239.3,
+          "decorr_lag": 500,
+          "K_final": -0.0223,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": -0.0304,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.0207,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": -0.0656,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": -0.1072,
+              "stride": 40
+            },
+            {
+              "n": 16000,
+              "K": -0.0223,
+              "stride": 80
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "name": "p\u2081",
+          "tau_int": 49.37,
+          "decorr_lag": 106,
+          "K_final": 0.8,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": 0.0079,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.0527,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": -0.0593,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.3793,
+              "stride": 40
+            },
+            {
+              "n": 16000,
+              "K": 0.8,
+              "stride": 80
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "name": "p\u2082",
+          "tau_int": 84.1,
+          "decorr_lag": 162,
+          "K_final": 0.9691,
+          "K_curve": [
+            {
+              "n": 1000,
+              "K": 0.0236,
+              "stride": 5
+            },
+            {
+              "n": 2000,
+              "K": 0.0373,
+              "stride": 10
+            },
+            {
+              "n": 4000,
+              "K": 0.2123,
+              "stride": 20
+            },
+            {
+              "n": 8000,
+              "K": 0.7693,
+              "stride": 40
+            },
+            {
+              "n": 16000,
+              "K": 0.9691,
+              "stride": 80
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "wall_seconds": 0.7
+}

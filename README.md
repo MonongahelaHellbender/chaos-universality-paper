@@ -21,7 +21,7 @@ expression (Pearson r=0.955).
 ```
 chaos_universality_classes.pdf   — the paper
 chaos_universality_classes.tex   — LaTeX source
-figures/                         — all 5 figures (PDF)
+figures/                         — all 10 figures (PDF)
 results/                         — seeded JSON artifacts (reproduce every number in paper)
 scripts/                         — figure generation and analysis scripts
 ```
@@ -31,7 +31,8 @@ scripts/                         — figure generation and analysis scripts
 ```bash
 pip install numpy scipy matplotlib scikit-learn
 python scripts/chaos_universality_lab.py      # regenerate main results
-python scripts/chaos_make_figures.py          # regenerate figures
+python scripts/chaos_make_figures.py          # main figures (1-5)
+python scripts/chaos_extension_figures.py     # diagnostic-battery figures (6-10)
 ```
 
 All results are seeded and deterministic. The reported numbers in the paper are read

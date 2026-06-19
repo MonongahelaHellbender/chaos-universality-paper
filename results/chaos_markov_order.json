@@ -1,0 +1,396 @@
+{
+  "version": "chaos_markov_order/0.1.0",
+  "generated_utc": "2026-06-19T08:29:41+00:00",
+  "config": {
+    "n_analysis": 16000,
+    "k_cells": 6,
+    "orders": [
+      1,
+      2,
+      3
+    ],
+    "kmeans_seed": 9995,
+    "min_test_route": 60
+  },
+  "summary": {
+    "k_cells": 6,
+    "orders": [
+      1,
+      2,
+      3
+    ],
+    "n_reliable": 18,
+    "min_test_route": 60,
+    "gain_by_family": {
+      "diss": {
+        "o2_minus_o1": {
+          "n": 10,
+          "mean": 0.0818,
+          "median": 0.0,
+          "max": 0.3286
+        },
+        "o3_minus_o1": {
+          "n": 10,
+          "mean": 0.0873,
+          "median": 0.0,
+          "max": 0.3286
+        }
+      },
+      "ham": {
+        "o2_minus_o1": {
+          "n": 5,
+          "mean": 0.0333,
+          "median": 0.0,
+          "max": 0.1667
+        },
+        "o3_minus_o1": {
+          "n": 5,
+          "mean": 0.0333,
+          "median": 0.0,
+          "max": 0.1667
+        }
+      },
+      "map": {
+        "o2_minus_o1": {
+          "n": 3,
+          "mean": 0.1109,
+          "median": 0.047,
+          "max": 0.2483
+        },
+        "o3_minus_o1": {
+          "n": 3,
+          "mean": 0.1153,
+          "median": 0.0579,
+          "max": 0.2349
+        }
+      }
+    },
+    "mannwhitney_gain_ham_vs_diss": {
+      "n_ham": 5,
+      "n_diss": 10,
+      "U": 22.0,
+      "p": 0.7298
+    },
+    "n_reliable_with_positive_o2_gain": 8,
+    "largest_o2_gains": [
+      {
+        "name": "mackey_glass",
+        "fam": "diss",
+        "gain": 0.3286
+      },
+      {
+        "name": "standard_map_K1p2",
+        "fam": "map",
+        "gain": 0.2483
+      },
+      {
+        "name": "aizawa",
+        "fam": "diss",
+        "gain": 0.192
+      }
+    ],
+    "memory_depth_separates_conservation": false,
+    "interpretation": "Route-grammar memory depth is heterogeneous: about half the reliable systems gain from order-2 (up to +0.33), the rest are order-1- saturated -- several Hamiltonians already sit at perfect order-1 accuracy. The gain does NOT separate the classes (Mann-Whitney Hamiltonian vs dissipative n.s., p~0.73), and the largest gains span dissipative (mackey-glass), map (standard map), and Hamiltonian (spring pendulum) families. Depth tracks route-data richness and coarse dynamical structure, not conservation."
+  },
+  "systems": [
+    {
+      "name": "lorenz63",
+      "family": "flow_dissipative",
+      "fam": "diss",
+      "n_route_total": 805,
+      "n_route_test": 402,
+      "acc_order1": 0.8756,
+      "acc_order2": 0.8756,
+      "acc_order3": 0.8756,
+      "gain_o2_minus_o1": 0.0,
+      "gain_o3_minus_o1": 0.0,
+      "reliable": true
+    },
+    {
+      "name": "rossler",
+      "family": "flow_dissipative",
+      "fam": "diss",
+      "n_route_total": 746,
+      "n_route_test": 372,
+      "acc_order1": 0.922,
+      "acc_order2": 0.922,
+      "acc_order3": 0.922,
+      "gain_o2_minus_o1": 0.0,
+      "gain_o3_minus_o1": 0.0,
+      "reliable": true
+    },
+    {
+      "name": "duffing_forced",
+      "family": "flow_dissipative",
+      "fam": "diss",
+      "n_route_total": 6,
+      "n_route_test": 2,
+      "acc_order1": 0.0,
+      "acc_order2": 0.0,
+      "acc_order3": 0.0,
+      "gain_o2_minus_o1": 0.0,
+      "gain_o3_minus_o1": 0.0,
+      "reliable": false
+    },
+    {
+      "name": "lorenz96_n5",
+      "family": "flow_dissipative",
+      "fam": "diss",
+      "n_route_total": 1223,
+      "n_route_test": 611,
+      "acc_order1": 0.9264,
+      "acc_order2": 0.9264,
+      "acc_order3": 0.9264,
+      "gain_o2_minus_o1": 0.0,
+      "gain_o3_minus_o1": 0.0,
+      "reliable": true
+    },
+    {
+      "name": "aizawa",
+      "family": "flow_dissipative",
+      "fam": "diss",
+      "n_route_total": 251,
+      "n_route_test": 125,
+      "acc_order1": 0.696,
+      "acc_order2": 0.888,
+      "acc_order3": 0.888,
+      "gain_o2_minus_o1": 0.192,
+      "gain_o3_minus_o1": 0.192,
+      "reliable": true
+    },
+    {
+      "name": "sprott_b",
+      "family": "flow_dissipative",
+      "fam": "diss",
+      "n_route_total": 193,
+      "n_route_test": 96,
+      "acc_order1": 0.6979,
+      "acc_order2": 0.6979,
+      "acc_order3": 0.6979,
+      "gain_o2_minus_o1": 0.0,
+      "gain_o3_minus_o1": 0.0,
+      "reliable": true
+    },
+    {
+      "name": "halvorsen",
+      "family": "flow_dissipative",
+      "fam": "diss",
+      "n_route_total": 655,
+      "n_route_test": 327,
+      "acc_order1": 1.0,
+      "acc_order2": 1.0,
+      "acc_order3": 1.0,
+      "gain_o2_minus_o1": 0.0,
+      "gain_o3_minus_o1": 0.0,
+      "reliable": true
+    },
+    {
+      "name": "thomas",
+      "family": "flow_dissipative",
+      "fam": "diss",
+      "n_route_total": 163,
+      "n_route_test": 81,
+      "acc_order1": 0.6667,
+      "acc_order2": 0.8148,
+      "acc_order3": 0.8148,
+      "gain_o2_minus_o1": 0.1481,
+      "gain_o3_minus_o1": 0.1481,
+      "reliable": true
+    },
+    {
+      "name": "chen",
+      "family": "flow_dissipative",
+      "fam": "diss",
+      "n_route_total": 815,
+      "n_route_test": 407,
+      "acc_order1": 0.5774,
+      "acc_order2": 0.7322,
+      "acc_order3": 0.7985,
+      "gain_o2_minus_o1": 0.1548,
+      "gain_o3_minus_o1": 0.2211,
+      "reliable": true
+    },
+    {
+      "name": "ueda_forced",
+      "family": "flow_dissipative",
+      "fam": "diss",
+      "n_route_total": 6,
+      "n_route_test": 2,
+      "acc_order1": 0.0,
+      "acc_order2": 0.0,
+      "acc_order3": 0.0,
+      "gain_o2_minus_o1": 0.0,
+      "gain_o3_minus_o1": 0.0,
+      "reliable": false
+    },
+    {
+      "name": "lorenz96_n10",
+      "family": "flow_dissipative",
+      "fam": "diss",
+      "n_route_total": 1068,
+      "n_route_test": 533,
+      "acc_order1": 0.7486,
+      "acc_order2": 0.743,
+      "acc_order3": 0.7317,
+      "gain_o2_minus_o1": -0.0056,
+      "gain_o3_minus_o1": -0.0169,
+      "reliable": true
+    },
+    {
+      "name": "double_pendulum",
+      "family": "flow_hamiltonian",
+      "fam": "ham",
+      "n_route_total": 36,
+      "n_route_test": 17,
+      "acc_order1": 0.1176,
+      "acc_order2": 0.1765,
+      "acc_order3": 0.1765,
+      "gain_o2_minus_o1": 0.0588,
+      "gain_o3_minus_o1": 0.0588,
+      "reliable": false
+    },
+    {
+      "name": "henon_heiles",
+      "family": "flow_hamiltonian",
+      "fam": "ham",
+      "n_route_total": 310,
+      "n_route_test": 154,
+      "acc_order1": 1.0,
+      "acc_order2": 1.0,
+      "acc_order3": 1.0,
+      "gain_o2_minus_o1": 0.0,
+      "gain_o3_minus_o1": 0.0,
+      "reliable": true
+    },
+    {
+      "name": "cr3bp_earth_moon",
+      "family": "flow_hamiltonian",
+      "fam": "ham",
+      "n_route_total": 338,
+      "n_route_test": 168,
+      "acc_order1": 1.0,
+      "acc_order2": 1.0,
+      "acc_order3": 1.0,
+      "gain_o2_minus_o1": 0.0,
+      "gain_o3_minus_o1": 0.0,
+      "reliable": true
+    },
+    {
+      "name": "yang_mills_x2y2",
+      "family": "flow_hamiltonian",
+      "fam": "ham",
+      "n_route_total": 32,
+      "n_route_test": 15,
+      "acc_order1": 0.7333,
+      "acc_order2": 0.6,
+      "acc_order3": 0.6,
+      "gain_o2_minus_o1": -0.1333,
+      "gain_o3_minus_o1": -0.1333,
+      "reliable": false
+    },
+    {
+      "name": "pullen_edmonds",
+      "family": "flow_hamiltonian",
+      "fam": "ham",
+      "n_route_total": 517,
+      "n_route_test": 258,
+      "acc_order1": 1.0,
+      "acc_order2": 1.0,
+      "acc_order3": 1.0,
+      "gain_o2_minus_o1": 0.0,
+      "gain_o3_minus_o1": 0.0,
+      "reliable": true
+    },
+    {
+      "name": "quartic_coupled",
+      "family": "flow_hamiltonian",
+      "fam": "ham",
+      "n_route_total": 316,
+      "n_route_test": 157,
+      "acc_order1": 1.0,
+      "acc_order2": 1.0,
+      "acc_order3": 1.0,
+      "gain_o2_minus_o1": 0.0,
+      "gain_o3_minus_o1": 0.0,
+      "reliable": true
+    },
+    {
+      "name": "spring_pendulum",
+      "family": "flow_hamiltonian",
+      "fam": "ham",
+      "n_route_total": 230,
+      "n_route_test": 114,
+      "acc_order1": 0.807,
+      "acc_order2": 0.9737,
+      "acc_order3": 0.9737,
+      "gain_o2_minus_o1": 0.1667,
+      "gain_o3_minus_o1": 0.1667,
+      "reliable": true
+    },
+    {
+      "name": "coupled_duffing_ham",
+      "family": "flow_hamiltonian",
+      "fam": "ham",
+      "n_route_total": 104,
+      "n_route_test": 51,
+      "acc_order1": 0.7843,
+      "acc_order2": 0.8039,
+      "acc_order3": 0.7647,
+      "gain_o2_minus_o1": 0.0196,
+      "gain_o3_minus_o1": -0.0196,
+      "reliable": false
+    },
+    {
+      "name": "logistic_r3p9",
+      "family": "map",
+      "fam": "map",
+      "n_route_total": 15440,
+      "n_route_test": 7719,
+      "acc_order1": 0.7689,
+      "acc_order2": 0.8159,
+      "acc_order3": 0.8219,
+      "gain_o2_minus_o1": 0.047,
+      "gain_o3_minus_o1": 0.053,
+      "reliable": true
+    },
+    {
+      "name": "henon_map",
+      "family": "map",
+      "fam": "map",
+      "n_route_total": 14069,
+      "n_route_test": 7034,
+      "acc_order1": 0.7137,
+      "acc_order2": 0.7511,
+      "acc_order3": 0.7715,
+      "gain_o2_minus_o1": 0.0374,
+      "gain_o3_minus_o1": 0.0579,
+      "reliable": true
+    },
+    {
+      "name": "standard_map_K1p2",
+      "family": "map",
+      "fam": "map",
+      "n_route_total": 13452,
+      "n_route_test": 6725,
+      "acc_order1": 0.5145,
+      "acc_order2": 0.7628,
+      "acc_order3": 0.7494,
+      "gain_o2_minus_o1": 0.2483,
+      "gain_o3_minus_o1": 0.2349,
+      "reliable": true
+    },
+    {
+      "name": "mackey_glass",
+      "family": "flow_delay",
+      "fam": "diss",
+      "n_route_total": 282,
+      "n_route_test": 140,
+      "acc_order1": 0.6143,
+      "acc_order2": 0.9429,
+      "acc_order3": 0.9429,
+      "gain_o2_minus_o1": 0.3286,
+      "gain_o3_minus_o1": 0.3286,
+      "reliable": true
+    }
+  ]
+}
