@@ -1,0 +1,220 @@
+{
+  "version": "chaos_parameter_sweep/0.1.0",
+  "generated_utc": "2026-05-29T06:11:23+00:00",
+  "seed": 20260528,
+  "summary": {
+    "lorenz_divergence_pinned_at_analytic_across_rho": true,
+    "lorenz_analytic_divergence": -13.666666666666666,
+    "lorenz_lambda1_range_over_rho_sweep": [
+      0.043,
+      1.437
+    ],
+    "pooled_tau_range_steps": [
+      1.0,
+      466.8
+    ],
+    "pooled_spearman_tau_vs_n_half": 0.27669172932330827,
+    "n_sweep_points": 20,
+    "interpretation": "\u03a3\u03bb is parameter-robust (Lorenz divergence stays at \u221213.667 across the whole \u03c1 sweep even as \u03bb\u2081 varies), confirming it is a structural discriminator; the mixing-time law holds over a wide \u03c4 range pooled across parameter values."
+  },
+  "sweeps": [
+    {
+      "system": "lorenz63",
+      "param_name": "rho",
+      "analytic_divergence_constant": -13.666666666666666,
+      "sweep": [
+        {
+          "lambda1": 0.7897591361523142,
+          "sigma_lambda_divergence": -13.666666666534953,
+          "mixing_time_tau": 103.63493909077158,
+          "K_long": 0.9985934772581004,
+          "n_half": 2000,
+          "analytic_divergence": -13.666666666666666,
+          "divergence_matches_analytic": true,
+          "param": 28.0
+        },
+        {
+          "lambda1": 1.0173517269087566,
+          "sigma_lambda_divergence": -13.66666666672294,
+          "mixing_time_tau": 70.66976635362231,
+          "K_long": 0.9995564418613649,
+          "n_half": 2000,
+          "analytic_divergence": -13.666666666666666,
+          "divergence_matches_analytic": true,
+          "param": 35.0
+        },
+        {
+          "lambda1": 1.1867390230325738,
+          "sigma_lambda_divergence": -13.666666666982788,
+          "mixing_time_tau": 61.46590566804495,
+          "K_long": 0.999021750243059,
+          "n_half": 2000,
+          "analytic_divergence": -13.666666666666666,
+          "divergence_matches_analytic": true,
+          "param": 45.0
+        },
+        {
+          "lambda1": 1.4371980261476354,
+          "sigma_lambda_divergence": -13.666666667186854,
+          "mixing_time_tau": 34.53573836503499,
+          "K_long": 0.9993345483935112,
+          "n_half": 2000,
+          "analytic_divergence": -13.666666666666666,
+          "divergence_matches_analytic": true,
+          "param": 60.0
+        },
+        {
+          "lambda1": 1.2336447827889903,
+          "sigma_lambda_divergence": -13.66666666710457,
+          "mixing_time_tau": 24.49431455064704,
+          "K_long": 0.9972493400022666,
+          "n_half": 2000,
+          "analytic_divergence": -13.666666666666666,
+          "divergence_matches_analytic": true,
+          "param": 90.0
+        },
+        {
+          "lambda1": 0.04283927947800286,
+          "sigma_lambda_divergence": -13.666666667649116,
+          "mixing_time_tau": 17.52979096227142,
+          "K_long": 0.47620532022926343,
+          "n_half": 2000,
+          "analytic_divergence": -13.666666666666666,
+          "divergence_matches_analytic": true,
+          "param": 150.0
+        }
+      ]
+    },
+    {
+      "system": "rossler",
+      "param_name": "c",
+      "sweep": [
+        {
+          "lambda1": 0.06063781470518225,
+          "sigma_lambda_divergence": -5.1869635188488665,
+          "mixing_time_tau": 35.95358106293265,
+          "K_long": 0.8511827077112809,
+          "n_half": 4000,
+          "param": 5.7
+        },
+        {
+          "lambda1": 0.10376600162254021,
+          "sigma_lambda_divergence": -8.564368989628228,
+          "mixing_time_tau": 36.12685890612557,
+          "K_long": 0.9592269224156618,
+          "n_half": 4000,
+          "param": 9.0
+        },
+        {
+          "lambda1": 0.10738706164084999,
+          "sigma_lambda_divergence": -12.342298045838724,
+          "mixing_time_tau": 36.832681968360575,
+          "K_long": 0.9692788925323499,
+          "n_half": 4000,
+          "param": 13.0
+        },
+        {
+          "lambda1": 0.01131636559943506,
+          "sigma_lambda_divergence": -17.665668138649146,
+          "mixing_time_tau": 37.280555261026336,
+          "K_long": 0.6088230102784582,
+          "n_half": 4000,
+          "param": 18.0
+        }
+      ]
+    },
+    {
+      "system": "logistic",
+      "param_name": "r",
+      "sweep": [
+        {
+          "lambda1": 0.18162903136760894,
+          "sigma_lambda_divergence": null,
+          "mixing_time_tau": 1.0,
+          "K_long": 0.9994350653781574,
+          "n_half": 2000,
+          "param": 3.6
+        },
+        {
+          "lambda1": 0.35133545711821645,
+          "sigma_lambda_divergence": null,
+          "mixing_time_tau": 1.0,
+          "K_long": 0.9996306728746078,
+          "n_half": 2000,
+          "param": 3.7
+        },
+        {
+          "lambda1": 0.43315466898307226,
+          "sigma_lambda_divergence": null,
+          "mixing_time_tau": 1.0,
+          "K_long": 0.9992543872956204,
+          "n_half": 2000,
+          "param": 3.8
+        },
+        {
+          "lambda1": 0.5002433206431979,
+          "sigma_lambda_divergence": null,
+          "mixing_time_tau": 1.0,
+          "K_long": 0.999673553760781,
+          "n_half": 2000,
+          "param": 3.9
+        },
+        {
+          "lambda1": 0.6931454191838631,
+          "sigma_lambda_divergence": null,
+          "mixing_time_tau": 1.0,
+          "K_long": 0.9993055457980768,
+          "n_half": 2000,
+          "param": 4.0
+        }
+      ]
+    },
+    {
+      "system": "standard_map",
+      "param_name": "K",
+      "sweep": [
+        {
+          "lambda1": 0.00041848881267646503,
+          "sigma_lambda_divergence": null,
+          "mixing_time_tau": 1.9285293970828423,
+          "K_long": -0.07674532579635747,
+          "n_half": null,
+          "param": 0.8
+        },
+        {
+          "lambda1": 0.18867838257331587,
+          "sigma_lambda_divergence": null,
+          "mixing_time_tau": 466.8063403925304,
+          "K_long": 0.9973333471281745,
+          "n_half": 2000,
+          "param": 1.2
+        },
+        {
+          "lambda1": 0.4690467819409867,
+          "sigma_lambda_divergence": null,
+          "mixing_time_tau": 1.7607846867914285,
+          "K_long": 0.9995579575807713,
+          "n_half": 2000,
+          "param": 2.0
+        },
+        {
+          "lambda1": 0.7075495115877964,
+          "sigma_lambda_divergence": null,
+          "mixing_time_tau": 1.0,
+          "K_long": 0.999508976054145,
+          "n_half": 2000,
+          "param": 3.5
+        },
+        {
+          "lambda1": 1.1296653306532165,
+          "sigma_lambda_divergence": null,
+          "mixing_time_tau": 1.1803529994146698,
+          "K_long": 0.9993292255433627,
+          "n_half": 2000,
+          "param": 6.0
+        }
+      ]
+    }
+  ],
+  "wall_seconds_total": 2.7
+}

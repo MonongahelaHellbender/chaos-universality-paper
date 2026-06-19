@@ -1,0 +1,1575 @@
+{
+  "version": "chaos_itinerary_prediction/0.1.0",
+  "generated_utc": "2026-05-29T05:58:45+00:00",
+  "seed": 20260528,
+  "config": {
+    "K_values": [
+      4,
+      6,
+      8
+    ],
+    "n_steps_flow": 16000,
+    "n_steps_map": 12000,
+    "train_test_split": "first half train, second half held-out test"
+  },
+  "summary": {
+    "n_chaotic_systems": 23,
+    "K_values": [
+      4,
+      6,
+      8
+    ],
+    "thesis": "Held-out next-symbol (itinerary) prediction beats baselines across chaotic systems even though the microstate trajectory is Lyapunov-unpredictable. We separate trivial dwell-time persistence (predict stay-in-cell) from genuine transition grammar (predict the correct destination when the cell changes).",
+    "mean_order1_accuracy_chaotic": 0.9252364384674557,
+    "mean_order0_baseline_chaotic": 0.1845709977214621,
+    "mean_persistence_baseline_chaotic": 0.862851462005443,
+    "mean_lift_vs_order0": 0.7406654407459934,
+    "mean_lift_vs_persistence": 0.062384976462012506,
+    "mean_change_fraction": 0.13714853799455692,
+    "mean_transition_conditioned_accuracy": 0.7701386804562466,
+    "mean_transition_baseline": 0.23336178438030242,
+    "n_systems_with_positive_lift_vs_order0": 23,
+    "n_systems_transition_grammar_beats_baseline": 21,
+    "n_chaotic_evaluated": 23,
+    "weak_thesis_supported_vs_order0": true,
+    "strong_thesis_supported_genuine_grammar": true,
+    "honest_note": "Much of the raw 0.9+ next-symbol accuracy is dwell-time persistence (finely-sampled flows stay in-cell). The transition-conditioned numbers isolate the genuine, non-trivial itinerary grammar."
+  },
+  "systems": [
+    {
+      "name": "lorenz63",
+      "family": "flow_dissipative",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.38429803725465683,
+          "persistence_baseline": 0.9692461557694712,
+          "order1_markov": 0.9692461557694712,
+          "order2_markov": 0.9692423105776444,
+          "lift_order1_minus_order0": 0.5849481185148143,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.7560975609756098,
+            "transition_baseline": 0.24390243902439024,
+            "n_changes": 246,
+            "change_fraction": 0.030753844230528817
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.23790473809226154,
+          "persistence_baseline": 0.9497437179647455,
+          "order1_markov": 0.9497437179647455,
+          "order2_markov": 0.9497374343585896,
+          "lift_order1_minus_order0": 0.711838979872484,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.8706467661691543,
+            "transition_baseline": 0.26616915422885573,
+            "n_changes": 402,
+            "change_fraction": 0.05025628203525441
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.2044005500687586,
+          "persistence_baseline": 0.9379922490311289,
+          "order1_markov": 0.9379922490311289,
+          "order2_markov": 0.937984496124031,
+          "lift_order1_minus_order0": 0.7335916989623703,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.8951612903225806,
+            "transition_baseline": 0.2157258064516129,
+            "n_changes": 496,
+            "change_fraction": 0.06200775096887111
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.711838979872484,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9497437179647455,
+      "rep_order0": 0.23790473809226154,
+      "rep_persistence": 0.9497437179647455,
+      "rep_transition_acc": 0.8706467661691543,
+      "rep_transition_baseline": 0.26616915422885573,
+      "rep_change_fraction": 0.05025628203525441
+    },
+    {
+      "name": "rossler",
+      "family": "flow_dissipative",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.3055381922740343,
+          "persistence_baseline": 0.9658707338417302,
+          "order1_markov": 0.9658707338417302,
+          "order2_markov": 0.9658664666166542,
+          "lift_order1_minus_order0": 0.6603325415676959,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.2490842490842491,
+            "n_changes": 273,
+            "change_fraction": 0.034129266158269785
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.2259032379047381,
+          "persistence_baseline": 0.9539942492811602,
+          "order1_markov": 0.9539942492811602,
+          "order2_markov": 0.953988497124281,
+          "lift_order1_minus_order0": 0.7280910113764221,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.9347826086956522,
+            "transition_baseline": 0.1983695652173913,
+            "n_changes": 368,
+            "change_fraction": 0.046005750718839854
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.18214776847105887,
+          "persistence_baseline": 0.947493436679585,
+          "order1_markov": 0.947493436679585,
+          "order2_markov": 0.9482370592648162,
+          "lift_order1_minus_order0": 0.7653456682085261,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.7738095238095238,
+            "transition_baseline": 0.1619047619047619,
+            "n_changes": 420,
+            "change_fraction": 0.052506563320415055
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.7280910113764221,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9539942492811602,
+      "rep_order0": 0.2259032379047381,
+      "rep_persistence": 0.9539942492811602,
+      "rep_transition_acc": 0.9347826086956522,
+      "rep_transition_baseline": 0.1983695652173913,
+      "rep_change_fraction": 0.046005750718839854
+    },
+    {
+      "name": "duffing_forced",
+      "family": "flow_dissipative",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.0,
+          "persistence_baseline": 1.0,
+          "order1_markov": 1.0,
+          "order2_markov": 1.0,
+          "lift_order1_minus_order0": 1.0,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": NaN,
+            "transition_baseline": NaN,
+            "n_changes": 0,
+            "change_fraction": 0.0
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.0,
+          "persistence_baseline": 1.0,
+          "order1_markov": 1.0,
+          "order2_markov": 1.0,
+          "lift_order1_minus_order0": 1.0,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": NaN,
+            "transition_baseline": NaN,
+            "n_changes": 0,
+            "change_fraction": 0.0
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.0,
+          "persistence_baseline": 1.0,
+          "order1_markov": 1.0,
+          "order2_markov": 1.0,
+          "lift_order1_minus_order0": 1.0,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": NaN,
+            "transition_baseline": NaN,
+            "n_changes": 0,
+            "change_fraction": 0.0
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 1.0,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 1.0,
+      "rep_order0": 0.0,
+      "rep_persistence": 1.0,
+      "rep_transition_acc": NaN,
+      "rep_transition_baseline": NaN,
+      "rep_change_fraction": 0.0
+    },
+    {
+      "name": "lorenz96_n5",
+      "family": "flow_dissipative",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.27103387923490435,
+          "persistence_baseline": 0.9451181397674709,
+          "order1_markov": 0.9451181397674709,
+          "order2_markov": 0.9451112778194548,
+          "lift_order1_minus_order0": 0.6740842605325665,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.24829157175398633,
+            "n_changes": 439,
+            "change_fraction": 0.05488186023252906
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.20377547193399176,
+          "persistence_baseline": 0.923115389423678,
+          "order1_markov": 0.923115389423678,
+          "order2_markov": 0.9231057764441111,
+          "lift_order1_minus_order0": 0.7193399174896862,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.9284552845528455,
+            "transition_baseline": 0.17886178861788618,
+            "n_changes": 615,
+            "change_fraction": 0.07688461057632204
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.1532691586448306,
+          "persistence_baseline": 0.9209901237654707,
+          "order1_markov": 0.9209901237654707,
+          "order2_markov": 0.9209802450612653,
+          "lift_order1_minus_order0": 0.7677209651206401,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.7974683544303798,
+            "transition_baseline": 0.17405063291139242,
+            "n_changes": 632,
+            "change_fraction": 0.07900987623452932
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.7193399174896862,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.923115389423678,
+      "rep_order0": 0.20377547193399176,
+      "rep_persistence": 0.923115389423678,
+      "rep_transition_acc": 0.9284552845528455,
+      "rep_transition_baseline": 0.17886178861788618,
+      "rep_change_fraction": 0.07688461057632204
+    },
+    {
+      "name": "aizawa",
+      "family": "flow_dissipative",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.4484310538817352,
+          "persistence_baseline": 0.9924990623827978,
+          "order1_markov": 0.9924990623827978,
+          "order2_markov": 0.9924981245311327,
+          "lift_order1_minus_order0": 0.5440680085010626,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.8666666666666667,
+            "transition_baseline": 0.25,
+            "n_changes": 60,
+            "change_fraction": 0.0075009376172021506
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.2894111763970496,
+          "persistence_baseline": 0.9869983747968496,
+          "order1_markov": 0.9869983747968496,
+          "order2_markov": 0.9869967491872969,
+          "lift_order1_minus_order0": 0.6975871983998,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.7596153846153846,
+            "transition_baseline": 0.28846153846153844,
+            "n_changes": 104,
+            "change_fraction": 0.013001625203150393
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.22440305038129765,
+          "persistence_baseline": 0.9851231403925491,
+          "order1_markov": 0.9851231403925491,
+          "order2_markov": 0.9849962490622656,
+          "lift_order1_minus_order0": 0.7607200900112514,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.8403361344537815,
+            "transition_baseline": 0.12605042016806722,
+            "n_changes": 119,
+            "change_fraction": 0.01487685960745093
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.6975871983998,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9869983747968496,
+      "rep_order0": 0.2894111763970496,
+      "rep_persistence": 0.9869983747968496,
+      "rep_transition_acc": 0.7596153846153846,
+      "rep_transition_baseline": 0.28846153846153844,
+      "rep_change_fraction": 0.013001625203150393
+    },
+    {
+      "name": "sprott_b",
+      "family": "flow_dissipative",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.31053881735216904,
+          "persistence_baseline": 0.9933741717714715,
+          "order1_markov": 0.9933741717714715,
+          "order2_markov": 0.9933733433358339,
+          "lift_order1_minus_order0": 0.6828353544193024,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.6037735849056604,
+            "transition_baseline": 0.2830188679245283,
+            "n_changes": 53,
+            "change_fraction": 0.006625828228528566
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.28816102012751593,
+          "persistence_baseline": 0.9889986248281035,
+          "order1_markov": 0.9889986248281035,
+          "order2_markov": 0.9889972493123281,
+          "lift_order1_minus_order0": 0.7008376047005875,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.5340909090909091,
+            "transition_baseline": 0.22727272727272727,
+            "n_changes": 88,
+            "change_fraction": 0.011001375171896487
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.24515564445555693,
+          "persistence_baseline": 0.9906238279784974,
+          "order1_markov": 0.9906238279784974,
+          "order2_markov": 0.9906226556639159,
+          "lift_order1_minus_order0": 0.7454681835229404,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.6533333333333333,
+            "transition_baseline": 0.14666666666666667,
+            "n_changes": 75,
+            "change_fraction": 0.009376172021502687
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.7008376047005875,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9889986248281035,
+      "rep_order0": 0.28816102012751593,
+      "rep_persistence": 0.9889986248281035,
+      "rep_transition_acc": 0.5340909090909091,
+      "rep_transition_baseline": 0.22727272727272727,
+      "rep_change_fraction": 0.011001375171896487
+    },
+    {
+      "name": "halvorsen",
+      "family": "flow_dissipative",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.32416552069008625,
+          "persistence_baseline": 0.9726215776972121,
+          "order1_markov": 0.9726215776972121,
+          "order2_markov": 0.9726181545386346,
+          "lift_order1_minus_order0": 0.6484560570071258,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.2511415525114155,
+            "n_changes": 219,
+            "change_fraction": 0.02737842230278785
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.18114764345543194,
+          "persistence_baseline": 0.9591198899862483,
+          "order1_markov": 0.9591198899862483,
+          "order2_markov": 0.9591147786946737,
+          "lift_order1_minus_order0": 0.7779722465308163,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.1651376146788991,
+            "n_changes": 327,
+            "change_fraction": 0.04088011001375172
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.14214276784598076,
+          "persistence_baseline": 0.9502437804725591,
+          "order1_markov": 0.9502437804725591,
+          "order2_markov": 0.9502375593898474,
+          "lift_order1_minus_order0": 0.8081010126265783,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.8819095477386935,
+            "transition_baseline": 0.13819095477386933,
+            "n_changes": 398,
+            "change_fraction": 0.04975621952744093
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.7779722465308163,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9591198899862483,
+      "rep_order0": 0.18114764345543194,
+      "rep_persistence": 0.9591198899862483,
+      "rep_transition_acc": 1.0,
+      "rep_transition_baseline": 0.1651376146788991,
+      "rep_change_fraction": 0.04088011001375172
+    },
+    {
+      "name": "thomas",
+      "family": "flow_dissipative",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.5335666958369796,
+          "persistence_baseline": 0.993249156144518,
+          "order1_markov": 0.993249156144518,
+          "order2_markov": 0.9932483120780196,
+          "lift_order1_minus_order0": 0.45968246030753845,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.6666666666666666,
+            "transition_baseline": 0.4074074074074074,
+            "n_changes": 54,
+            "change_fraction": 0.006750843855481936
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.40692586573321665,
+          "persistence_baseline": 0.9899987498437305,
+          "order1_markov": 0.9899987498437305,
+          "order2_markov": 0.9899974993748437,
+          "lift_order1_minus_order0": 0.5830728841105138,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.6375,
+            "transition_baseline": 0.375,
+            "n_changes": 80,
+            "change_fraction": 0.010001250156269533
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.34129266158269783,
+          "persistence_baseline": 0.9868733591698963,
+          "order1_markov": 0.9868733591698963,
+          "order2_markov": 0.9868717179294824,
+          "lift_order1_minus_order0": 0.6455806975871985,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.6,
+            "transition_baseline": 0.3523809523809524,
+            "n_changes": 105,
+            "change_fraction": 0.013126640830103764
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.5830728841105138,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9899987498437305,
+      "rep_order0": 0.40692586573321665,
+      "rep_persistence": 0.9899987498437305,
+      "rep_transition_acc": 0.6375,
+      "rep_transition_baseline": 0.375,
+      "rep_change_fraction": 0.010001250156269533
+    },
+    {
+      "name": "chen",
+      "family": "flow_dissipative",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.32466558319789973,
+          "persistence_baseline": 0.9579947493436679,
+          "order1_markov": 0.9579947493436679,
+          "order2_markov": 0.9579894973743436,
+          "lift_order1_minus_order0": 0.6333291661457682,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.5773809523809523,
+            "transition_baseline": 0.36607142857142855,
+            "n_changes": 336,
+            "change_fraction": 0.04200525065633204
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.20577572196524566,
+          "persistence_baseline": 0.9452431553944243,
+          "order1_markov": 0.9452431553944243,
+          "order2_markov": 0.9452363090772693,
+          "lift_order1_minus_order0": 0.7394674334291786,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.4292237442922374,
+            "transition_baseline": 0.2694063926940639,
+            "n_changes": 438,
+            "change_fraction": 0.0547568446055757
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.18314789348668584,
+          "persistence_baseline": 0.9346168271033879,
+          "order1_markov": 0.9346168271033879,
+          "order2_markov": 0.9347336834208552,
+          "lift_order1_minus_order0": 0.7514689336167021,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.5315487571701721,
+            "transition_baseline": 0.21223709369024857,
+            "n_changes": 523,
+            "change_fraction": 0.06538317289661208
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.7394674334291786,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9452431553944243,
+      "rep_order0": 0.20577572196524566,
+      "rep_persistence": 0.9452431553944243,
+      "rep_transition_acc": 0.4292237442922374,
+      "rep_transition_baseline": 0.2694063926940639,
+      "rep_change_fraction": 0.0547568446055757
+    },
+    {
+      "name": "ueda_forced",
+      "family": "flow_dissipative",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.0,
+          "persistence_baseline": 1.0,
+          "order1_markov": 1.0,
+          "order2_markov": 1.0,
+          "lift_order1_minus_order0": 1.0,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": NaN,
+            "transition_baseline": NaN,
+            "n_changes": 0,
+            "change_fraction": 0.0
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.0,
+          "persistence_baseline": 1.0,
+          "order1_markov": 1.0,
+          "order2_markov": 1.0,
+          "lift_order1_minus_order0": 1.0,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": NaN,
+            "transition_baseline": NaN,
+            "n_changes": 0,
+            "change_fraction": 0.0
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.0,
+          "persistence_baseline": 1.0,
+          "order1_markov": 1.0,
+          "order2_markov": 1.0,
+          "lift_order1_minus_order0": 1.0,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": NaN,
+            "transition_baseline": NaN,
+            "n_changes": 0,
+            "change_fraction": 0.0
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 1.0,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 1.0,
+      "rep_order0": 0.0,
+      "rep_persistence": 1.0,
+      "rep_transition_acc": NaN,
+      "rep_transition_baseline": NaN,
+      "rep_change_fraction": 0.0
+    },
+    {
+      "name": "lorenz96_n10",
+      "family": "flow_dissipative",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.26815851981497685,
+          "persistence_baseline": 0.946493311663958,
+          "order1_markov": 0.946493311663958,
+          "order2_markov": 0.9464866216554139,
+          "lift_order1_minus_order0": 0.6783347918489812,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.8995327102803738,
+            "transition_baseline": 0.26401869158878505,
+            "n_changes": 428,
+            "change_fraction": 0.053506688336042
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.21265158144768095,
+          "persistence_baseline": 0.9297412176522065,
+          "order1_markov": 0.9297412176522065,
+          "order2_markov": 0.929732433108277,
+          "lift_order1_minus_order0": 0.7170896362045256,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.7597864768683275,
+            "transition_baseline": 0.1903914590747331,
+            "n_changes": 562,
+            "change_fraction": 0.07025878234779348
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.14626828353544194,
+          "persistence_baseline": 0.9236154519314914,
+          "order1_markov": 0.9236154519314914,
+          "order2_markov": 0.9236059014753688,
+          "lift_order1_minus_order0": 0.7773471683960494,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.618657937806874,
+            "transition_baseline": 0.14729950900163666,
+            "n_changes": 611,
+            "change_fraction": 0.07638454806850857
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.7170896362045256,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9297412176522065,
+      "rep_order0": 0.21265158144768095,
+      "rep_persistence": 0.9297412176522065,
+      "rep_transition_acc": 0.7597864768683275,
+      "rep_transition_baseline": 0.1903914590747331,
+      "rep_change_fraction": 0.07025878234779348
+    },
+    {
+      "name": "double_pendulum",
+      "family": "flow_hamiltonian",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.2064008001000125,
+          "persistence_baseline": 0.9979997499687461,
+          "order1_markov": 0.9979997499687461,
+          "order2_markov": 0.9979994998749687,
+          "lift_order1_minus_order0": 0.7915989498687336,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.8125,
+            "transition_baseline": 0.4375,
+            "n_changes": 16,
+            "change_fraction": 0.002000250031253907
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.0,
+          "persistence_baseline": 0.9974996874609326,
+          "order1_markov": 0.9974996874609326,
+          "order2_markov": 0.9974993748437109,
+          "lift_order1_minus_order0": 0.9974996874609326,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.55,
+            "transition_baseline": 0.35,
+            "n_changes": 20,
+            "change_fraction": 0.0025003125390673834
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.19977497187148394,
+          "persistence_baseline": 0.9972496562070259,
+          "order1_markov": 0.9972496562070259,
+          "order2_markov": 0.997249312328082,
+          "lift_order1_minus_order0": 0.7974746843355419,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.5,
+            "transition_baseline": 0.36363636363636365,
+            "n_changes": 22,
+            "change_fraction": 0.002750343792974122
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.9974996874609326,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9974996874609326,
+      "rep_order0": 0.0,
+      "rep_persistence": 0.9974996874609326,
+      "rep_transition_acc": 0.55,
+      "rep_transition_baseline": 0.35,
+      "rep_change_fraction": 0.0025003125390673834
+    },
+    {
+      "name": "henon_heiles",
+      "family": "flow_hamiltonian",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.28391048881110137,
+          "persistence_baseline": 0.9871233904238029,
+          "order1_markov": 0.9871233904238029,
+          "order2_markov": 0.9871217804451112,
+          "lift_order1_minus_order0": 0.7032129016127016,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.2524271844660194,
+            "n_changes": 103,
+            "change_fraction": 0.012876609576197025
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.18214776847105887,
+          "persistence_baseline": 0.9807475934491812,
+          "order1_markov": 0.9807475934491812,
+          "order2_markov": 0.9807451862965741,
+          "lift_order1_minus_order0": 0.7985998249781223,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.16233766233766234,
+            "n_changes": 154,
+            "change_fraction": 0.019252406550818852
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.15314414301787724,
+          "persistence_baseline": 0.97662207775972,
+          "order1_markov": 0.97662207775972,
+          "order2_markov": 0.9766191547886972,
+          "lift_order1_minus_order0": 0.8234779347418427,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.9144385026737968,
+            "transition_baseline": 0.13368983957219252,
+            "n_changes": 187,
+            "change_fraction": 0.023377922240280034
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.7985998249781223,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9807475934491812,
+      "rep_order0": 0.18214776847105887,
+      "rep_persistence": 0.9807475934491812,
+      "rep_transition_acc": 1.0,
+      "rep_transition_baseline": 0.16233766233766234,
+      "rep_change_fraction": 0.019252406550818852
+    },
+    {
+      "name": "cr3bp_earth_moon",
+      "family": "flow_hamiltonian",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.2525315664458057,
+          "persistence_baseline": 0.9859982497812226,
+          "order1_markov": 0.9859982497812226,
+          "order2_markov": 0.9859964991247812,
+          "lift_order1_minus_order0": 0.7334666833354169,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.25,
+            "n_changes": 112,
+            "change_fraction": 0.014001750218777347
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.16739592449056132,
+          "persistence_baseline": 0.978997374671834,
+          "order1_markov": 0.978997374671834,
+          "order2_markov": 0.9789947486871718,
+          "lift_order1_minus_order0": 0.8116014501812727,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.16666666666666666,
+            "n_changes": 168,
+            "change_fraction": 0.02100262532816602
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.12626578322290286,
+          "persistence_baseline": 0.9719964995624453,
+          "order1_markov": 0.9719964995624453,
+          "order2_markov": 0.9719929982495624,
+          "lift_order1_minus_order0": 0.8457307163395424,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.125,
+            "n_changes": 224,
+            "change_fraction": 0.028003500437554694
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.8116014501812727,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.978997374671834,
+      "rep_order0": 0.16739592449056132,
+      "rep_persistence": 0.978997374671834,
+      "rep_transition_acc": 1.0,
+      "rep_transition_baseline": 0.16666666666666666,
+      "rep_change_fraction": 0.02100262532816602
+    },
+    {
+      "name": "yang_mills_x2y2",
+      "family": "flow_hamiltonian",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.3692961620202525,
+          "persistence_baseline": 0.9982497812226528,
+          "order1_markov": 0.9982497812226528,
+          "order2_markov": 0.9982495623905977,
+          "lift_order1_minus_order0": 0.6289536192024003,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.42857142857142855,
+            "transition_baseline": 0.2857142857142857,
+            "n_changes": 14,
+            "change_fraction": 0.0017502187773471684
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.11213901737717215,
+          "persistence_baseline": 0.9978747343417927,
+          "order1_markov": 0.9978747343417927,
+          "order2_markov": 0.9978744686171543,
+          "lift_order1_minus_order0": 0.8857357169646206,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.35294117647058826,
+            "transition_baseline": 0.23529411764705882,
+            "n_changes": 17,
+            "change_fraction": 0.002125265658207276
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.041380172521565194,
+          "persistence_baseline": 0.9968746093261658,
+          "order1_markov": 0.9968746093261658,
+          "order2_markov": 0.9968742185546386,
+          "lift_order1_minus_order0": 0.9554944368046006,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.48,
+            "transition_baseline": 0.2,
+            "n_changes": 25,
+            "change_fraction": 0.0031253906738342293
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.8857357169646206,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9978747343417927,
+      "rep_order0": 0.11213901737717215,
+      "rep_persistence": 0.9978747343417927,
+      "rep_transition_acc": 0.35294117647058826,
+      "rep_transition_baseline": 0.23529411764705882,
+      "rep_change_fraction": 0.002125265658207276
+    },
+    {
+      "name": "pullen_edmonds",
+      "family": "flow_hamiltonian",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.25715714464308037,
+          "persistence_baseline": 0.9783722965370671,
+          "order1_markov": 0.9783722965370671,
+          "order2_markov": 0.9783695923980995,
+          "lift_order1_minus_order0": 0.7212151518939868,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.24855491329479767,
+            "n_changes": 173,
+            "change_fraction": 0.021627703462932867
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.2047755969496187,
+          "persistence_baseline": 0.9677459682460308,
+          "order1_markov": 0.9677459682460308,
+          "order2_markov": 0.967741935483871,
+          "lift_order1_minus_order0": 0.7629703712964121,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.16666666666666666,
+            "n_changes": 258,
+            "change_fraction": 0.032254031753969244
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.15751968996124516,
+          "persistence_baseline": 0.956994624328041,
+          "order1_markov": 0.956994624328041,
+          "order2_markov": 0.956989247311828,
+          "lift_order1_minus_order0": 0.799474934366796,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.125,
+            "n_changes": 344,
+            "change_fraction": 0.043005375671958994
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.7629703712964121,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9677459682460308,
+      "rep_order0": 0.2047755969496187,
+      "rep_persistence": 0.9677459682460308,
+      "rep_transition_acc": 1.0,
+      "rep_transition_baseline": 0.16666666666666666,
+      "rep_change_fraction": 0.032254031753969244
+    },
+    {
+      "name": "quartic_coupled",
+      "family": "flow_hamiltonian",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.24840605075634453,
+          "persistence_baseline": 0.9868733591698963,
+          "order1_markov": 0.9868733591698963,
+          "order2_markov": 0.9868717179294824,
+          "lift_order1_minus_order0": 0.7384673084135518,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.24761904761904763,
+            "n_changes": 105,
+            "change_fraction": 0.013126640830103764
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.18789848731091385,
+          "persistence_baseline": 0.9802475309413676,
+          "order1_markov": 0.9802475309413676,
+          "order2_markov": 0.9802450612653163,
+          "lift_order1_minus_order0": 0.7923490436304538,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.16455696202531644,
+            "n_changes": 158,
+            "change_fraction": 0.01975246905863233
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.13614201775221904,
+          "persistence_baseline": 0.9737467183397924,
+          "order1_markov": 0.9737467183397924,
+          "order2_markov": 0.9737434358589647,
+          "lift_order1_minus_order0": 0.8376047005875734,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.12380952380952381,
+            "n_changes": 210,
+            "change_fraction": 0.026253281660207527
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.7923490436304538,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9802475309413676,
+      "rep_order0": 0.18789848731091385,
+      "rep_persistence": 0.9802475309413676,
+      "rep_transition_acc": 1.0,
+      "rep_transition_baseline": 0.16455696202531644,
+      "rep_change_fraction": 0.01975246905863233
+    },
+    {
+      "name": "spring_pendulum",
+      "family": "flow_hamiltonian",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.34404300537567195,
+          "persistence_baseline": 0.9899987498437305,
+          "order1_markov": 0.9899987498437305,
+          "order2_markov": 0.9899974993748437,
+          "lift_order1_minus_order0": 0.6459557444680586,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.8,
+            "transition_baseline": 0.4,
+            "n_changes": 80,
+            "change_fraction": 0.010001250156269533
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.1978997374671834,
+          "persistence_baseline": 0.9881235154394299,
+          "order1_markov": 0.9881235154394299,
+          "order2_markov": 0.9881220305076269,
+          "lift_order1_minus_order0": 0.7902237779722465,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.16842105263157894,
+            "n_changes": 95,
+            "change_fraction": 0.011876484560570071
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.16014501812726592,
+          "persistence_baseline": 0.9841230153769222,
+          "order1_markov": 0.9841230153769222,
+          "order2_markov": 0.9841210302575644,
+          "lift_order1_minus_order0": 0.8239779972496563,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.12598425196850394,
+            "n_changes": 127,
+            "change_fraction": 0.015876984623077885
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.7902237779722465,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9881235154394299,
+      "rep_order0": 0.1978997374671834,
+      "rep_persistence": 0.9881235154394299,
+      "rep_transition_acc": 1.0,
+      "rep_transition_baseline": 0.16842105263157894,
+      "rep_change_fraction": 0.011876484560570071
+    },
+    {
+      "name": "coupled_duffing_ham",
+      "family": "flow_hamiltonian",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.020127515939492437,
+          "persistence_baseline": 0.9914989373671709,
+          "order1_markov": 0.9914989373671709,
+          "order2_markov": 0.9916229057264316,
+          "lift_order1_minus_order0": 0.9713714214276784,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.9705882352941176,
+            "transition_baseline": 0.35294117647058826,
+            "n_changes": 68,
+            "change_fraction": 0.008501062632829104
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.0,
+          "persistence_baseline": 0.9914989373671709,
+          "order1_markov": 0.9914989373671709,
+          "order2_markov": 0.9914978744686171,
+          "lift_order1_minus_order0": 0.9914989373671709,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.8235294117647058,
+            "transition_baseline": 0.3088235294117647,
+            "n_changes": 68,
+            "change_fraction": 0.008501062632829104
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.0,
+          "persistence_baseline": 0.9866233279159895,
+          "order1_markov": 0.9866233279159895,
+          "order2_markov": 0.9866216554138535,
+          "lift_order1_minus_order0": 0.9866233279159895,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.9158878504672897,
+            "transition_baseline": 0.18691588785046728,
+            "n_changes": 107,
+            "change_fraction": 0.0133766720840105
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.9914989373671709,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9914989373671709,
+      "rep_order0": 0.0,
+      "rep_persistence": 0.9914989373671709,
+      "rep_transition_acc": 0.8235294117647058,
+      "rep_transition_baseline": 0.3088235294117647,
+      "rep_change_fraction": 0.008501062632829104
+    },
+    {
+      "name": "logistic_r3p9",
+      "family": "map",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.367622540846949,
+          "persistence_baseline": 0.03251083694564855,
+          "order1_markov": 0.7484161387129044,
+          "order2_markov": 0.7623811905952976,
+          "lift_order1_minus_order0": 0.38079359786595535,
+          "lift_order1_minus_persistence": 0.7159053017672559,
+          "transition_conditioned": {
+            "transition_accuracy": 0.7735653972083405,
+            "transition_baseline": 0.37997587454764775,
+            "n_changes": 5803,
+            "change_fraction": 0.9674891630543514
+          },
+          "n_test_transitions": 5998
+        },
+        "6": {
+          "order0_baseline": 0.23474491497165723,
+          "persistence_baseline": 0.04284761587195732,
+          "order1_markov": 0.7347449149716572,
+          "order2_markov": 0.7947306986826747,
+          "lift_order1_minus_order0": 0.49999999999999994,
+          "lift_order1_minus_persistence": 0.6918972990996999,
+          "transition_conditioned": {
+            "transition_accuracy": 0.7669395575683678,
+            "transition_baseline": 0.24525344016721826,
+            "n_changes": 5741,
+            "change_fraction": 0.9571523841280427
+          },
+          "n_test_transitions": 5998
+        },
+        "8": {
+          "order0_baseline": 0.21757252417472492,
+          "persistence_baseline": 0.01450483494498166,
+          "order1_markov": 0.6632210736912304,
+          "order2_markov": 0.7256961814240454,
+          "lift_order1_minus_order0": 0.44564854951650545,
+          "lift_order1_minus_persistence": 0.6487162387462487,
+          "transition_conditioned": {
+            "transition_accuracy": 0.6729825748604297,
+            "transition_baseline": 0.22077482659448486,
+            "n_changes": 5911,
+            "change_fraction": 0.9854951650550183
+          },
+          "n_test_transitions": 5998
+        }
+      },
+      "rep_lift": 0.49999999999999994,
+      "rep_lift_vs_persistence": 0.6918972990996999,
+      "rep_order1": 0.7347449149716572,
+      "rep_order0": 0.23474491497165723,
+      "rep_persistence": 0.04284761587195732,
+      "rep_transition_acc": 0.7669395575683678,
+      "rep_transition_baseline": 0.24525344016721826,
+      "rep_change_fraction": 0.9571523841280427
+    },
+    {
+      "name": "henon_map",
+      "family": "map",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.3775629271545258,
+          "persistence_baseline": 0.20936822803800634,
+          "order1_markov": 0.5860976829471578,
+          "order2_markov": 0.6867289096365455,
+          "lift_order1_minus_order0": 0.20853475579263203,
+          "lift_order1_minus_persistence": 0.37672945490915144,
+          "transition_conditioned": {
+            "transition_accuracy": 0.7413029728020241,
+            "transition_baseline": 0.38140417457305503,
+            "n_changes": 4743,
+            "change_fraction": 0.7906317719619936
+          },
+          "n_test_transitions": 5999
+        },
+        "6": {
+          "order0_baseline": 0.24220703450575096,
+          "persistence_baseline": 0.12785464244040673,
+          "order1_markov": 0.6246041006834473,
+          "order2_markov": 0.6907302434144715,
+          "lift_order1_minus_order0": 0.3823970661776963,
+          "lift_order1_minus_persistence": 0.49674945824304056,
+          "transition_conditioned": {
+            "transition_accuracy": 0.7161697247706422,
+            "transition_baseline": 0.27771406727828746,
+            "n_changes": 5232,
+            "change_fraction": 0.8721453575595932
+          },
+          "n_test_transitions": 5999
+        },
+        "8": {
+          "order0_baseline": 0.23137189531588598,
+          "persistence_baseline": 0.07251208534755793,
+          "order1_markov": 0.6332722120353392,
+          "order2_markov": 0.6752250750250083,
+          "lift_order1_minus_order0": 0.40190031671945325,
+          "lift_order1_minus_persistence": 0.5607601266877813,
+          "transition_conditioned": {
+            "transition_accuracy": 0.6827821710999281,
+            "transition_baseline": 0.24946081955427749,
+            "n_changes": 5564,
+            "change_fraction": 0.9274879146524421
+          },
+          "n_test_transitions": 5999
+        }
+      },
+      "rep_lift": 0.3823970661776963,
+      "rep_lift_vs_persistence": 0.49674945824304056,
+      "rep_order1": 0.6246041006834473,
+      "rep_order0": 0.24220703450575096,
+      "rep_persistence": 0.12785464244040673,
+      "rep_transition_acc": 0.7161697247706422,
+      "rep_transition_baseline": 0.27771406727828746,
+      "rep_change_fraction": 0.8721453575595932
+    },
+    {
+      "name": "standard_map_K1p2",
+      "family": "map",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.3368894815802634,
+          "persistence_baseline": 0.3235539256542757,
+          "order1_markov": 0.5822637106184364,
+          "order2_markov": 0.644214738246082,
+          "lift_order1_minus_order0": 0.24537422903817302,
+          "lift_order1_minus_persistence": 0.2587097849641607,
+          "transition_conditioned": {
+            "transition_accuracy": 0.6207491375061607,
+            "transition_baseline": 0.42656481025135534,
+            "n_changes": 4058,
+            "change_fraction": 0.6764460743457242
+          },
+          "n_test_transitions": 5999
+        },
+        "6": {
+          "order0_baseline": 0.17669611601933655,
+          "persistence_baseline": 0.18369728288048007,
+          "order1_markov": 0.42990498416402734,
+          "order2_markov": 0.5243414471490497,
+          "lift_order1_minus_order0": 0.2532088681446908,
+          "lift_order1_minus_persistence": 0.24620770128354727,
+          "transition_conditioned": {
+            "transition_accuracy": 0.5011231366142537,
+            "transition_baseline": 0.2728200939350623,
+            "n_changes": 4897,
+            "change_fraction": 0.81630271711952
+          },
+          "n_test_transitions": 5999
+        },
+        "8": {
+          "order0_baseline": 0.21903650608434738,
+          "persistence_baseline": 0.1298549758293049,
+          "order1_markov": 0.5072512085347558,
+          "order2_markov": 0.5655218406135378,
+          "lift_order1_minus_order0": 0.2882147024504084,
+          "lift_order1_minus_persistence": 0.3773962327054509,
+          "transition_conditioned": {
+            "transition_accuracy": 0.5582375478927203,
+            "transition_baseline": 0.24904214559386972,
+            "n_changes": 5220,
+            "change_fraction": 0.8701450241706952
+          },
+          "n_test_transitions": 5999
+        }
+      },
+      "rep_lift": 0.2532088681446908,
+      "rep_lift_vs_persistence": 0.24620770128354727,
+      "rep_order1": 0.42990498416402734,
+      "rep_order0": 0.17669611601933655,
+      "rep_persistence": 0.18369728288048007,
+      "rep_transition_acc": 0.5011231366142537,
+      "rep_transition_baseline": 0.2728200939350623,
+      "rep_change_fraction": 0.81630271711952
+    },
+    {
+      "name": "mackey_glass_tau17",
+      "family": "flow_dissipative",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.2651912978244561,
+          "persistence_baseline": 0.9876219054763691,
+          "order1_markov": 0.9876219054763691,
+          "order2_markov": 0.9876203576341128,
+          "lift_order1_minus_order0": 0.7224306076519129,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.6767676767676768,
+            "transition_baseline": 0.3434343434343434,
+            "n_changes": 99,
+            "change_fraction": 0.012378094523630907
+          },
+          "n_test_transitions": 7998
+        },
+        "6": {
+          "order0_baseline": 0.2875718929732433,
+          "persistence_baseline": 0.9814953738434609,
+          "order1_markov": 0.9814953738434609,
+          "order2_markov": 0.9814930598974615,
+          "lift_order1_minus_order0": 0.6939234808702175,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.6081081081081081,
+            "transition_baseline": 0.22297297297297297,
+            "n_changes": 148,
+            "change_fraction": 0.018504626156539136
+          },
+          "n_test_transitions": 7998
+        },
+        "8": {
+          "order0_baseline": 0.22230557639409854,
+          "persistence_baseline": 0.9743685921480371,
+          "order1_markov": 0.9743685921480371,
+          "order2_markov": 0.9743653870201325,
+          "lift_order1_minus_order0": 0.7520630157539385,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.5756097560975609,
+            "transition_baseline": 0.16097560975609757,
+            "n_changes": 205,
+            "change_fraction": 0.02563140785196299
+          },
+          "n_test_transitions": 7998
+        }
+      },
+      "rep_lift": 0.6939234808702175,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9814953738434609,
+      "rep_order0": 0.2875718929732433,
+      "rep_persistence": 0.9814953738434609,
+      "rep_transition_acc": 0.6081081081081081,
+      "rep_transition_baseline": 0.22297297297297297,
+      "rep_change_fraction": 0.018504626156539136
+    },
+    {
+      "name": "harmonic",
+      "family": "control",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.2472809101137642,
+          "persistence_baseline": 0.9682460307538442,
+          "order1_markov": 0.9682460307538442,
+          "order2_markov": 0.9682420605151287,
+          "lift_order1_minus_order0": 0.72096512064008,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.25196850393700787,
+            "n_changes": 254,
+            "change_fraction": 0.03175396924615577
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.16714589323665457,
+          "persistence_baseline": 0.952244030503813,
+          "order1_markov": 0.952244030503813,
+          "order2_markov": 0.9522380595148787,
+          "lift_order1_minus_order0": 0.7850981372671584,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.1649214659685864,
+            "n_changes": 382,
+            "change_fraction": 0.047755969496187024
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.12676584573071634,
+          "persistence_baseline": 0.936367045880735,
+          "order1_markov": 0.936367045880735,
+          "order2_markov": 0.9363590897724431,
+          "lift_order1_minus_order0": 0.8096012001500187,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 1.0,
+            "transition_baseline": 0.1237721021611002,
+            "n_changes": 509,
+            "change_fraction": 0.06363295411926491
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.7850981372671584,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.952244030503813,
+      "rep_order0": 0.16714589323665457,
+      "rep_persistence": 0.952244030503813,
+      "rep_transition_acc": 1.0,
+      "rep_transition_baseline": 0.1649214659685864,
+      "rep_change_fraction": 0.047755969496187024
+    },
+    {
+      "name": "quasiperiodic_2tori",
+      "family": "control",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.34404300537567195,
+          "persistence_baseline": 0.962745343167896,
+          "order1_markov": 0.962745343167896,
+          "order2_markov": 0.9627406851712929,
+          "lift_order1_minus_order0": 0.618702337792224,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.9228187919463087,
+            "transition_baseline": 0.27181208053691275,
+            "n_changes": 298,
+            "change_fraction": 0.037254656832104015
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.26540817602200273,
+          "persistence_baseline": 0.9583697962245281,
+          "order1_markov": 0.9583697962245281,
+          "order2_markov": 0.9583645911477869,
+          "lift_order1_minus_order0": 0.6929616202025254,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.8168168168168168,
+            "transition_baseline": 0.17717717717717718,
+            "n_changes": 333,
+            "change_fraction": 0.041630203775471934
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.26540817602200273,
+          "persistence_baseline": 0.9451181397674709,
+          "order1_markov": 0.9451181397674709,
+          "order2_markov": 0.9451112778194548,
+          "lift_order1_minus_order0": 0.6797099637454682,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.8815489749430524,
+            "transition_baseline": 0.13439635535307518,
+            "n_changes": 439,
+            "change_fraction": 0.05488186023252906
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.6929616202025254,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9583697962245281,
+      "rep_order0": 0.26540817602200273,
+      "rep_persistence": 0.9583697962245281,
+      "rep_transition_acc": 0.8168168168168168,
+      "rep_transition_baseline": 0.17717717717717718,
+      "rep_change_fraction": 0.041630203775471934
+    },
+    {
+      "name": "random_walk",
+      "family": "control",
+      "by_K": {
+        "4": {
+          "order0_baseline": 0.0,
+          "persistence_baseline": 0.9959994999374921,
+          "order1_markov": 0.9959994999374921,
+          "order2_markov": 0.9959989997499374,
+          "lift_order1_minus_order0": 0.9959994999374921,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.59375,
+            "transition_baseline": 0.5,
+            "n_changes": 32,
+            "change_fraction": 0.004000500062507814
+          },
+          "n_test_transitions": 7999
+        },
+        "6": {
+          "order0_baseline": 0.0,
+          "persistence_baseline": 0.9944993124140518,
+          "order1_markov": 0.9944993124140518,
+          "order2_markov": 0.994498624656164,
+          "lift_order1_minus_order0": 0.9944993124140518,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.9772727272727273,
+            "transition_baseline": 0.0,
+            "n_changes": 44,
+            "change_fraction": 0.005500687585948244
+          },
+          "n_test_transitions": 7999
+        },
+        "8": {
+          "order0_baseline": 0.0,
+          "persistence_baseline": 0.994249281160145,
+          "order1_markov": 0.994249281160145,
+          "order2_markov": 0.9942485621405351,
+          "lift_order1_minus_order0": 0.994249281160145,
+          "lift_order1_minus_persistence": 0.0,
+          "transition_conditioned": {
+            "transition_accuracy": 0.9347826086956522,
+            "transition_baseline": 0.0,
+            "n_changes": 46,
+            "change_fraction": 0.005750718839854982
+          },
+          "n_test_transitions": 7999
+        }
+      },
+      "rep_lift": 0.9944993124140518,
+      "rep_lift_vs_persistence": 0.0,
+      "rep_order1": 0.9944993124140518,
+      "rep_order0": 0.0,
+      "rep_persistence": 0.9944993124140518,
+      "rep_transition_acc": 0.9772727272727273,
+      "rep_transition_baseline": 0.0,
+      "rep_change_fraction": 0.005500687585948244
+    }
+  ],
+  "wall_seconds_total": 4.7
+}
