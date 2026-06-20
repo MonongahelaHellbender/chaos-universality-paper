@@ -59,12 +59,20 @@ from pathlib import Path
 from typing import Callable
 
 import numpy as np
-import torch
 
-ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
+try:
+    import torch
+    try:
+        from models.liquid_core import LiquidPredictor as _LiquidPredictor
+        _HAS_LIQUID = True
+    except ImportError:
+        _HAS_LIQUID = False
+except ImportError:
+    torch = None  # type: ignore
+    _HAS_LIQUID = False
 
-from models.liquid_core import LiquidPredictor  # noqa: E402
+ROOT = Path(__file__).resolve().parent.parent  # dist/chaos-universality-paper
+sys.path.insert(0, str(ROOT / "scripts"))
 
 OUT = ROOT / "results" / "chaos_universality_lab.json"
 
@@ -1113,10 +1121,14 @@ def foundation_predictability(traj: np.ndarray, hidden: int = 32,
     """Train a Foundation LiquidPredictor briefly; report normalized eval MSE.
 
     Normalized against the per-step persistence baseline MSE so values <1 mean
-    the predictor beats persistence."""
+    the predictor beats persistence. Returns NaN fields when the Foundation
+    model is not available (standalone package without models/)."""
+    _nan = {"lnn_mse": float("nan"), "persistence_mse": float("nan"),
+            "skill": float("nan")}
+    if not _HAS_LIQUID or torch is None:
+        return _nan
     if traj.shape[0] < 400:
-        return {"lnn_mse": float("nan"), "persistence_mse": float("nan"),
-                "skill": float("nan")}
+        return _nan
     torch.manual_seed(seed)
     np.random.seed(seed)
     sig = traj.astype(np.float32)
@@ -1129,7 +1141,7 @@ def foundation_predictability(traj: np.ndarray, hidden: int = 32,
     train_seq = torch.tensor(sig[:half]).unsqueeze(0)            # (1, T, d)
     eval_seq = torch.tensor(sig[half:]).unsqueeze(0)
     d = sig.shape[1]
-    model = LiquidPredictor(input_size=d, hidden_size=hidden, dt=dt, multi_scale=True)
+    model = _LiquidPredictor(input_size=d, hidden_size=hidden, dt=dt, multi_scale=True)
     opt = torch.optim.Adam(model.parameters(), lr=3e-3)
     model.train()
     # windowed training over the first half

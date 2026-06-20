@@ -27,11 +27,8 @@ from matplotlib.patches import Patch
 
 PKG = Path(__file__).resolve().parent.parent       # dist/chaos-universality-paper
 RESULTS = PKG / "results"
-ROOT = PKG.parents[1]                               # Autonomous-Scientist-Core
-MAIN_FIGDIR = ROOT / "manuscripts" / "figures" / "chaos"
-DIST_FIGDIR = PKG / "figures"
-for d in (MAIN_FIGDIR, DIST_FIGDIR):
-    d.mkdir(parents=True, exist_ok=True)
+FIGDIR = PKG / "figures"
+FIGDIR.mkdir(parents=True, exist_ok=True)
 
 plt.rcParams.update({
     "figure.dpi": 130, "savefig.dpi": 200, "font.size": 10,
@@ -50,9 +47,8 @@ def _load(name):
 
 
 def _save(fig, stem):
-    fig.savefig(MAIN_FIGDIR / f"{stem}.pdf", bbox_inches="tight")
-    fig.savefig(MAIN_FIGDIR / f"{stem}.png", bbox_inches="tight")
-    fig.savefig(DIST_FIGDIR / f"{stem}.pdf", bbox_inches="tight")
+    fig.savefig(FIGDIR / f"{stem}.pdf", bbox_inches="tight")
+    fig.savefig(FIGDIR / f"{stem}.png", bbox_inches="tight")
     plt.close(fig)
     print(f"  wrote {stem}.pdf/.png")
 
@@ -235,7 +231,7 @@ def fig_markov_order():
 
 
 def main():
-    print("Generating extension figures →", MAIN_FIGDIR, "and", DIST_FIGDIR)
+    print("Generating extension figures →", FIGDIR)
     fig_alpha_K()
     fig_observable()
     fig_itinerary_advantage()

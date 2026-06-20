@@ -44,10 +44,10 @@ from pathlib import Path
 
 import numpy as np
 
-ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT))
+ROOT = Path(__file__).resolve().parent.parent  # dist/chaos-universality-paper
+sys.path.insert(0, str(ROOT / "scripts"))
 
-from scripts.liquid.chaos_universality_lab import (  # noqa: E402
+from chaos_universality_lab import (  # noqa: E402
     build_zoo, gottwald_melbourne_01_test, _first_decorrelation_lag, GLOBAL_SEED,
 )
 

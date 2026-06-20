@@ -16,9 +16,9 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parent.parent  # dist/chaos-universality-paper
 RESULTS = ROOT / "results"
-FIGDIR = ROOT / "manuscripts" / "figures" / "chaos"
+FIGDIR = ROOT / "figures"
 FIGDIR.mkdir(parents=True, exist_ok=True)
 
 plt.rcParams.update({
