@@ -1,6 +1,4 @@
-\documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb}
+\documentclass[aip,cha,preprint,amsmath,amssymb,floatfix]{revtex4-2}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{siunitx}
@@ -10,13 +8,17 @@
 \usepackage{xcolor}
 \graphicspath{{figures/}{figures/chaos/}}
 
-\title{Phase-Space Volume Contraction, Not the 0--1 Test, Separates\\
-Conservative from Dissipative Chaos: A Cross-System Cautionary Result}
-\author{Melissa Ellison\\\small Independent Researcher}
-\date{\small 2026-06-19}
-
 \begin{document}
-\maketitle
+
+\title{Phase-Space Volume Contraction, Not the 0--1 Test, Separates Conservative from Dissipative Chaos: A Cross-System Cautionary Result}
+
+\author{Melissa Ellison}
+%% ORCID: add your iD on the line below before submitting (optional in the .tex;
+%% arXiv also lets you attach it via your account at submission time).
+%\altaffiliation{ORCID: 0000-0000-0000-0000}
+\affiliation{Independent Researcher}
+
+\date{\today}
 
 \begin{abstract}
 Deterministic chaos defeats long-horizon trajectory prediction, but many structural
@@ -48,6 +50,8 @@ contribution is a corrected discriminator, a reproducible warning about finite-t
 misuse of a widely used chaos statistic \cite{falconer2007}, and a bounded
 constructive result about predicting the climate, not the weather.
 \end{abstract}
+
+\maketitle
 
 \section{Introduction}
 
@@ -770,19 +774,16 @@ $\tau\approx1$ carries no length information. The calculator is
 
 \section{Reference table for the main claim}
 
-\begin{center}
-\small
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.32\linewidth}>{\raggedright\arraybackslash}p{0.34\linewidth}}
-\toprule
-Question & Correct diagnostic & Boundary \\
-\midrule
-Is the scalar series chaotic? & 0--1 $K$ & Requires sufficient effective length \\
-Is the flow conservative or dissipative? & $\Sigma\lambda=\langle\nabla\!\cdot f\rangle$ & Requires vector field/model \\
-Can the exact future state be predicted? & No long-horizon claim & Lyapunov wall remains \\
-Can coarse route grammar be predicted? & Held-out itinerary model & Symbolic transitions only \\
-\bottomrule
-\end{tabular}
-\end{center}
+\noindent Each row pairs a question with the correct diagnostic and its boundary
+of validity (rendered as a list rather than a paragraph-column table to stay
+within REVTeX's tabular handling):
+
+\begin{description}
+\item[Is the scalar series chaotic?] 0--1 $K$ --- requires sufficient effective length.
+\item[Is the flow conservative or dissipative?] $\Sigma\lambda=\langle\nabla\!\cdot f\rangle$ --- requires the vector field / model.
+\item[Can the exact future state be predicted?] No long-horizon claim --- the Lyapunov wall remains.
+\item[Can coarse route grammar be predicted?] Held-out itinerary model --- symbolic transitions only.
+\end{description}
 
 \begin{thebibliography}{99}
 

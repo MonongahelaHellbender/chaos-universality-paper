@@ -13,3 +13,10 @@ __pycache__/
 *.bbl
 *.blg
 *.toc
+
+# arXiv bundle staging + tarball (regenerable via build_arxiv.sh)
+arxiv_src/
+*.tar.gz
+
+# REVTeX auto-generated notes bib
+*Notes.bib
